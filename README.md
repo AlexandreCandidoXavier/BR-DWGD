@@ -5,6 +5,21 @@ Brazilian Daily  Weather  Gridded  Data new version
 
 &Delta
 
+```html
+<h2>Example of code</h2>
+
+<pre>
+    <div class="container">
+        <div class="block two first">
+            <h2>Your title</h2>
+            <div class="wrap">
+            //Your content
+            </div>
+        </div>
+    </div>
+</pre>
+```
+
 # Os resultados gráficos dos scripts
 
 [exemplo1.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo1.py) Plotando dados e controles
