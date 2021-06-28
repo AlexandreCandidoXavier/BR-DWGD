@@ -22,6 +22,8 @@ Brazilian Daily  Weather  Gridded  Data new version
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo4.jpeg)
 
 
-[exemplo5.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo5.py) Normais RH, período 01/01/1990-31/12/2018.
+[exemplo5.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo5.py) Plotando e exportando em "csv" normais mensais de Tmax para 
+algumas localidades. Normais 01/01/1990 a 31/12/2019.
 
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo5.jpeg)
+
