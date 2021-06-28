@@ -42,7 +42,7 @@ ET0 para o Brasil utilizando os dados gradeados (1980/01/01-2009/12/31)
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo8_2.jpeg)
 
 
-[exemplo9.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo9.py) Abrindo e plotando a normal da temperatura media do mês janeiro, período 1961/01/01-1989/12/31.
+[exemplo9.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo9.py) Comportamento da temperatura média anual para as diferentes regiões, período 1961-2019.
 
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo9_1.jpeg)
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo9_2.jpeg)
