@@ -32,4 +32,3 @@ Rs.sel(time=day2get).plot(ax=ax1), ax1.axis('off')
 Rs_count.sel(time=day2get).plot(ax=ax2), ax2.axis('off')
 Rs_dist_nearest.sel(time=day2get).plot(ax=ax3), ax3.axis('off')
 plt.show()
-a = 1
