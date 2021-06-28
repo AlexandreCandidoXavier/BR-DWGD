@@ -1,7 +1,7 @@
 # BR-DWGD
 Brazilian Daily  Weather  Gridded  Data new version
 
-'''html<&#916>'''
+'''html &#916'''
 
 &Delta
 
