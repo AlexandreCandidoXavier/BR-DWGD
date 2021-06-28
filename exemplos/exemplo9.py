@@ -87,15 +87,3 @@ for n in np.arange(5):
     y = df_all[df_all['region'] == names_regions[n]].t_mean.values
     slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
     stat_region[n] = np.array([slope, r_value, p_value, std_err])
-
-
-df_stats_region = pd.DataFrame(stat_region, columns=["(C/ano)", "R", "p_value", "std_err"] , index=names_regions)
-regiao = "Região"
-width = 12
-print(f'|{regiao: <{width}}|{df_stats_region.columns[0]:<{width}}|{df_stats_region.columns[1]:<{width}}|{df_stats_region.columns[2]:<{width}}|{df_stats_region.columns[3]:<{width}}|')
-linha = '-'*width
-print(f'|{linha}|{linha}|{linha}|{linha}|{linha}|')
-
-for n in range(len(stat_region)):
-    print(
-        f'|{names_regions[n]: <{width}}|{str(stat_region[n][0])[:5]: <{width}}|{str(stat_region[n][1])[:5]: <{width}}|{str(stat_region[n][2])[:4] + str(stat_region[n][2])[-4:]: <{width}}|{str(stat_region[n][3])[:5]: <{width}}|')
