@@ -52,7 +52,7 @@ ET0 para o Brasil utilizando os dados gradeados (1980/01/01-2009/12/31)
 
 |Região      |<html>
 <body>
-<p>&Delta;</p>
+&Delta
 </body>
 </html> (C/ano)     |R           |p_value     |std_err     |
 |------------|------------|------------|------------|------------|
