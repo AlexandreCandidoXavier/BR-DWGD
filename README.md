@@ -1,13 +1,7 @@
 # BR-DWGD
 Brazilian Daily  Weather  Gridded  Data new version
 
-'''html &#916'''
 
-&Delta
-
-<html>
-&Delta;
-</html>
 
 # Os resultados gráficos dos scripts
 
