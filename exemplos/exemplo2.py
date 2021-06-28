@@ -7,9 +7,9 @@ import numpy as np
 da temperatura maxima (Tmax), calculando a sua media 
 mensal (01/01/1961-12/2010) e exportando dados diarios em arquivo cvs:
 
-Tmax_20010101_20200731_BR-DWGD_UFES_UTEXAS_v_0.34.nc
-Tmax_19810101_20001231_BR-DWGD_UFES_UTEXAS_v_0.34.nc
-Tmax_19610101_19801231_BR-DWGD_UFES_UTEXAS_v_0.34.nc
+Tmax_20010101_20200731_BR-DWGD_UFES_UTEXAS_v_X.XX.nc
+Tmax_19810101_20001231_BR-DWGD_UFES_UTEXAS_v_X.XX.nc
+Tmax_19610101_19801231_BR-DWGD_UFES_UTEXAS_v_X.XX.nc
 """
 
 # versoes
