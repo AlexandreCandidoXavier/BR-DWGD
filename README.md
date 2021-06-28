@@ -6,7 +6,7 @@ Brazilian Daily  Weather  Gridded  Data new version
 &Delta
 
 <html>
-&Delta
+&Delta;
 </html>
 
 # Os resultados gráficos dos scripts
