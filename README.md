@@ -41,3 +41,12 @@ ET0 para o Brasil utilizando os dados gradeados (1980/01/01-2009/12/31)
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo8_1.jpeg)
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo8_2.jpeg)
 
+
+
+              variacao (C/ano)         R       p_value   std_err
+Sul                   0.019284  0.656033  1.698625e-08  0.002938
+Sudeste               0.023123  0.778663  3.870994e-13  0.002468
+Nordeste              0.028658  0.854879  6.980142e-18  0.002304
+Centro-Oeste          0.025455  0.842619  5.909194e-17  0.002155
+Norte                 0.028147  0.877747  7.280310e-20  0.002035
+
