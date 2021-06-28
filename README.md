@@ -7,11 +7,7 @@ Brazilian Daily  Weather  Gridded  Data new version
 
 <html>
 <body>
-
 <p>&Delta;</p>
-<p>I will display &#8364;</p>
-<p>I will display &#x20AC;</p>
-
 </body>
 </html>
 
@@ -54,7 +50,11 @@ ET0 para o Brasil utilizando os dados gradeados (1980/01/01-2009/12/31)
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo8_2.jpeg)
 
 
-|Região      |&Delta (C/ano)     |R           |p_value     |std_err     |
+|Região      |<html>
+<body>
+<p>&Delta;</p>
+</body>
+</html> (C/ano)     |R           |p_value     |std_err     |
 |------------|------------|------------|------------|------------|
 |Sul         |0.019       |0.656       |1.69e-08    |0.002       |
 |Sudeste     |0.023       |0.778       |3.87e-13    |0.002       |
