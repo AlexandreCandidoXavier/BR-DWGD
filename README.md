@@ -30,3 +30,9 @@ algumas localidades. Normais 01/01/1990 a 31/12/2019.
 algumas localidades. Normais 01/01/1990 a 31/12/2019.
 
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo6.jpeg)
+
+[exemplo7.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo7.py) PCalculo da diferenca sazonal entre a precipitacao e a 
+ET0 para o Brasil utilizando os dados gradeados (1980/01/01-2009/12/31)
+
+![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo7.jpeg)
+
