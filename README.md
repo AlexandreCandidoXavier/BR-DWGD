@@ -7,6 +7,7 @@ Brazilian Daily  Weather  Gridded  Data new version
 
 ```html
 <h2>Example of code  &#916 </h2>
+<p>I will display &#8364;</p>
 
 <pre>
     <div class="container">
