@@ -6,7 +6,7 @@ Brazilian Daily  Weather  Gridded  Data new version
 &Delta
 
 ```html
-<h2>Example of code</h2>
+<h2>Example of code  &#916 </h2>
 
 <pre>
     <div class="container">
