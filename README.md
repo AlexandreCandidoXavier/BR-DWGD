@@ -8,7 +8,7 @@ Brazilian Daily  Weather  Gridded  Data new version
 <html>
 <body>
 
-<p>I will display &euro;</p>
+<p>&Delta;</p>
 <p>I will display &#8364;</p>
 <p>I will display &#x20AC;</p>
 
