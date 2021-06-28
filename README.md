@@ -41,11 +41,6 @@ ET0 para o Brasil utilizando os dados gradeados (1980/01/01-2009/12/31)
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo8_1.jpeg)
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo8_2.jpeg)
 
-
-
-|0.019||0.656|1.698|0.002|
-|0.023||0.778|3.870|0.002|
-|0.028||0.854|6.980|0.002|
-|0.025||0.842|5.909|0.002|
-|0.028||0.877|7.280|0.002|
+|Região    |(C/ano)   |R         |p_value   |std_err   |
+|----------|----------|----------|----------|----------|
 
