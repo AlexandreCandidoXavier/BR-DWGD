@@ -13,3 +13,6 @@ Brazilian Daily  Weather  Gridded  Data new version
 
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo2.jpeg)
 
+[exemplo2.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo3.py) Normais RH, período 01/01/1990-31/12/2018.
+
+![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo3.jpeg)
