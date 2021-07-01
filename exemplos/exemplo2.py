@@ -21,7 +21,7 @@ print (pd.__version__) # 1.2.4
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 ds = xr.open_mfdataset(path_var + 'Tmax*.nc')
 
-# pegando a variavel Tmax entre 01/01/1980 a 31/12/2010
+# pegando a variavel Tmax entre '1961-01-01', '1989-12-31'
 Tmax_data = ds.Tmax.sel(time=slice('1961-01-01','1989-12-31'))
 
 # pegando os dados para o posicao de Umuarama/Parana
