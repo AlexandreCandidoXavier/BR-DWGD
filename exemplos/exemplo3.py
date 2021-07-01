@@ -11,7 +11,7 @@ RH_19610101_19801231_BR-DWGD_UFES_UTEXAS_v_X.XX.nc
 path_var =  '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 ds = xr.open_mfdataset(path_var + 'RH*.nc')
 
-# pegando a variavel RH entre 01/01/2006-31/12/2016
+# pegando a variavel RH entre '1990-01-01' a '2019-12-31'
 RH_data = ds.RH.sel(time=slice('1990-01-01', '2019-12-31'))
 
 # agrupando em media mensal
