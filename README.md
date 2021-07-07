@@ -26,8 +26,7 @@ algumas localidades. Normais 01/01/1990 a 31/12/2019.
 
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo5.jpeg)
 
-[exemplo6.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo6.py) Plotando e exportando em "csv" normais mensais de Tmax para 
-algumas localidades. Normais 01/01/1990 a 31/12/2019.
+[exemplo6.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo6.py) Plotando controles para duas posições
 
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo6.jpeg)
 
