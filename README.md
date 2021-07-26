@@ -1,8 +1,6 @@
 # BR-DWGD
 Brazilian Daily  Weather  Gridded  Data new version. Homepage dos dados [aqui](https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0)
 
-
-
 # Os resultados gráficos dos scripts
 
 [exemplo1.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo1.py) Plotando dados e controles
