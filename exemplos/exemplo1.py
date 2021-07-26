@@ -1,7 +1,8 @@
 import xarray as xr
 import matplotlib.pylab as plt
 
-""" Plotando dados e controles para todo Brasil em um dia:
+"""
+Plotando dados e controles para todo Brasil em um dia:
 Todos os arquivos da variavel diarios de Rs sao necessarios, ou seja,
 os de controle tambem
 """
