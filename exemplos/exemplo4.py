@@ -1,7 +1,8 @@
 import xarray as xr
 import matplotlib.pyplot as plt
 
-""" Plotando a média mensal da ET0 para algumas cidades.
+"""
+Plotando a média mensal da ET0 para algumas cidades periodo 1961-01-01' ate '1989-12-31.
 """
 
 # pegando variavel
@@ -24,7 +25,6 @@ varMean = var.resample(time='M').mean('time')
 for city, cityCoord in cityInformation.items():
     varMean.sel(latitude=cityCoord[0], longitude=cityCoord[1],
                 method='nearest').plot(label=city, linewidth=1)
-
 
 plt.ylim(1, 8)
 plt.title('')
