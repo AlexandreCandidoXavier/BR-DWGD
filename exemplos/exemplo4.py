@@ -10,20 +10,21 @@ ds = xr.open_mfdataset(path_var + 'ETo*.nc').sel(time=slice('1961-01-01','1989-1
 var = ds['ETo']
 
 # cidades e coordenadas
-cityNames = ['Santa Maria-RS', 'Manaus-AM',
-             'Petrolina-PE', 'Alegre-ES']
-cityCoord = [[-29.7, -53.7],
-             [-3., -60.],
-             [-9.4, -40.5],
-             [-20.7, -41.5]]
+cityInformation = {
+    'Santa Maria-RS': [-29.7, -53.7],
+    'Manaus-AM': [-3., -60.],
+    'Petrolina-PE': [-9.4, -40.5],
+    'Alegre-ES': [-20.7, -41.5]
+}
 
 # calculando a media mensal
 varMean = var.resample(time='M').mean('time')
 
 # plotando
-for n, city in enumerate(cityNames):
-    varMean.sel(latitude=cityCoord[n][0], longitude=cityCoord[n][1],
+for city, cityCoord in cityInformation.items():
+    varMean.sel(latitude=cityCoord[0], longitude=cityCoord[1],
                 method='nearest').plot(label=city, linewidth=1)
+
 
 plt.ylim(1, 8)
 plt.title('')
