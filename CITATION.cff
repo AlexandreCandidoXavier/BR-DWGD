@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Candido Xavier
+    given-names: ALexandre
+    orcid: ??
+title: "My Research Software"
+version: 0.1
+date-released: 2021-08-19
