@@ -49,13 +49,13 @@ ET0 para o Brasil utilizando os dados gradeados (1980/01/01-2009/12/31)
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo9_1.jpeg)
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo9_2.jpeg)
 
-**Estatísticas:**
+**Estatísticas:** 
 
 |Região      |<html>&Delta; (&#8451;/ano)</html>|R           |p_value     |std_err     |
 |------------|------------|------------|------------|------------|
-|Sul         |0.019       |0.659       |1.33e-08    |0.003       |
-|Sudeste     |0.023       |0.778       |3.72e-13    |0.002       |
-|Nordeste    |0.028       |0.855       |6.75e-18    |0.002       |
-|Centro-Oeste|0.025       |0.843       |5.27e-17    |0.002       |
-|Norte       |0.028       |0.878       |7.11e-20    |0.002       |
+|Sul         |0.019       |0.660       |1.33e-08    |0.003       |
+|Sudeste     |0.023       |0.779       |3.72e-13    |0.002       |
+|Nordeste    |0.029       |0.855       |6.75e-18    |0.002       |
+|Centro-Oeste|0.026       |0.843       |5.28e-17    |0.002       |
+|Norte       |0.028       |0.877       |7.11e-20    |0.002       |
 
