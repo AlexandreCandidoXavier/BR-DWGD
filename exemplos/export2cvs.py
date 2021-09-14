@@ -38,7 +38,7 @@ for n, var_name2get in enumerate(var_names):
 # saving
 for n in range(len(lat)):
     print('arquivo {} de um total de {}'.format(n+1, len(lat)))
-    name_file = 'lat{}_lon{}.csv'.format(lat[n], lon[n])
+    name_file =  'lat{:.2f}_lon{:.2f}.csv'.format(lat[n], lon[n])
     if ~np.isnan(var_ar[0, n]):
         file = var_ar[:, n::len(lon)]
         pd.DataFrame(file, index=time, columns=var_names).to_csv(name_file, float_format='%.1f')

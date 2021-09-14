@@ -24,6 +24,10 @@ tmin_yearly = tmin.sel(time=slice(day_first, day_last)).resample(time='Y').mean(
 # Temperatura anual
 temp_mean_yearly = (tmax_yearly+tmin_yearly) / 2
 
+# calculos dos pesos das celulas de acordo com sua latitude
+weights = np.cos(np.deg2rad(temp_mean_yearly.latitude))
+weights.name = "weights"
+
 # figura regioes
 fig, ax = plt.subplots(1)
 temp_mean_yearly.isel(time=0).plot(ax=ax)
@@ -57,9 +61,12 @@ for n in range(5):
     mask = (lon_min < tmax_yearly.longitude) & (lon_max > tmax_yearly.longitude) & \
            (lat_min < tmax_yearly.latitude) &  (lat_max > tmax_yearly.latitude)
     # yearly tmean to Dataframe
-    temp_mean_yearly_region = temp_mean_yearly.where(mask).mean(['latitude', 'longitude']).values
-    df_region = pd.DataFrame(np.c_[pd.to_datetime(temp_mean_yearly.time.values).year,
-                                   temp_mean_yearly_region], columns=['year', 't_mean'])
+    # inserindo o peso na regiao
+    temp_mean_yearly_r = temp_mean_yearly.where(mask)
+    temp_mean_yearly_w = temp_mean_yearly_r.weighted(weights)
+    temp_mean_yearly_region_w = temp_mean_yearly_w.mean(['latitude', 'longitude']).values
+    df_region = pd.DataFrame(np.c_[temp_mean_yearly_r.time.dt.year,
+                                   temp_mean_yearly_region_w], columns=['year', 't_mean'])
     df_region['region'] = names_regions[n]
     if n == 0:
         df_all = df_region

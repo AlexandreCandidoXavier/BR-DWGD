@@ -1,9 +1,9 @@
 # BR-DWGD
 Brazilian Daily  Weather  Gridded  Data new version. Homepage dos dados [aqui](https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0)
 
-# Exportando dados arquivos csv
+# Exportando dados para arquivos csv
 
-O script [export2cvs.csv](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2cvs.py) apresenta 
+O script [export2cvs.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2cvs.py) apresenta 
 como exportar os dados diários de posições geográficas para arquivos no formato *csv*.
 
 # Os resultados gráficos dos scripts
