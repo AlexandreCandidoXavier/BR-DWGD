@@ -1,11 +1,14 @@
-# BR-DWGD
-Brazilian Daily  Weather  Gridded  Data new version. Homepage dos dados [aqui](https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0)
+# Brazilian Daily  Weather Gridded  Data (BR-DWGD)
+Estes códigos tem com objetivo demonstrar algumas possibilidade usos da grade
+BR-DWGD por meio da linguagem Python. Encontrando erros, por favor entrar em contato (alexandre.xavier@ufes.br).
 
-# Download
+A *homepage* dos dados contendo informações sobre atualizações [aqui](https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0)
+
+# Download da grade (BR-DWGD)
 [**Aqui**](https://drive.google.com/drive/folders/11-qnvwojirAtaQxSE03N0_SUrbcsz44N)
 
 # Citação dos dados
-Xavier, A. C. , Scanlon, B. R. , King, C. W.  and Alves, A. I . New Improved Brazilian Daily Weather Gridded Data (1961-2020). Conditional acceptance in International Journal of Climatology. 
+Xavier, A.C. , Scanlon, B.R. , King, C.W.  and Alves, A. I. New Improved Brazilian Daily Weather Gridded Data (1961-2020). Accept  for publication in the International Journal of Climatology. 
 
 # Exportando dados para arquivos csv
 
