@@ -2,7 +2,9 @@
 Estes códigos tem com objetivo demonstrar algumas possibilidade usos da grade
 BR-DWGD por meio da linguagem Python. Encontrando erros, por favor entrar em contato (alexandre.xavier@ufes.br).
 
-A *homepage* dos dados contendo informações sobre atualizações [aqui](https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0)
+Para a *homepage* dos dados contendo informações sobre atualizações:
+
+[https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0](https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0)
 
 # Download da grade (BR-DWGD)
 [**Aqui**](https://drive.google.com/drive/folders/11-qnvwojirAtaQxSE03N0_SUrbcsz44N)
@@ -42,7 +44,7 @@ algumas localidades. Normais 01/01/1990 a 31/12/2019.
 
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo6.jpeg)
 
-[exemplo7.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo7.py) Calculo da diferenca sazonal entre a precipitacao e a 
+[exemplo7.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo7.py) Cálculo da diferenca sazonal entre a precipitacao e a 
 ET0 para o Brasil utilizando os dados gradeados (1980/01/01-2009/12/31)
 
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/resultado_exemplo7.jpeg)
