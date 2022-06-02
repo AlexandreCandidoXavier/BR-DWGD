@@ -8,8 +8,8 @@ Exportando dados de todas as variaveis para determinadas posicoes geograficas.
 """
 
 # limits of the area
-lat_min, lat_max =  -14.26, -13.14
-lon_min, lon_max =  -39.52, -38.93
+lat_min, lat_max = -18.8, -15.5
+lon_min, lon_max = -41.7, -38.2
 
 # variables names
 var_names = ['Rs', 'u2','Tmax', 'Tmin', 'RH', 'pr', 'ETo']
@@ -41,7 +41,7 @@ def rawData(var2get_xr, var_name2get):
 # getting data from NetCDF files
 for n, var_name2get in enumerate(var_names):
     print(n)
-    var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', combine='nested', concat_dim='time')
+    var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc')
     if n == 0:
         var_ar = rawData(var2get_xr, var_name2get)
         n_lines = var_ar.shape[0]
