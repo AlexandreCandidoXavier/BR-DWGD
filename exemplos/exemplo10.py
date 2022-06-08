@@ -6,6 +6,7 @@ import datetime
 import numpy as np
 import glob
 import os
+import seaborn as sns
 
 
 path2save_nc_file = "/home/alexandre/Dropbox/grade_2020/cmip6/"

@@ -16,22 +16,20 @@ ds = xr.open_mfdataset(path_var + 'pr_Control*.nc')
 dist_nearest = ds['dist_nearest']
 count = ds['count']
 
-# Nome dos pontos
-Names = ['Sorriso-MT', 'Campinas-SP']
-lat_lon = [[-12.5, -55.7],
-           [-22.8, -47.0],]
-
+# nome e posicoes dos pontos
+posicoes = {'Sorriso-MT': [-12.5, -55.7],
+            'Campinas-SP': [-22.8, -47.0]}
 # plotando distancia do pluviometro mais proximo, ao longo do tempo,
 # que foi utilizado na interpolacao
 _, (ax1, ax2) = plt.subplots(2, 1)
-for n, names in enumerate(Names):
-    dist_nearest.sel(latitude=lat_lon[n][0],
-                     longitude=lat_lon[n][1],
+for names, lat_lon in posicoes.items():
+    dist_nearest.sel(latitude=lat_lon[0],
+                     longitude=lat_lon[1],
                      method='nearest').plot(ax=ax1, label=names)
 
     # número de estações que contem na célula
-    count.sel(latitude=lat_lon[n][0],
-              longitude=lat_lon[n][1],
+    count.sel(latitude=lat_lon[0],
+              longitude=lat_lon[1],
               method='nearest').plot(ax=ax2, label=names)
 
 ax1.set_ylim(0, 400)
@@ -40,4 +38,5 @@ ax1.set_title('')
 ax2.set_ylim(-1, 6)
 ax2.legend()
 ax2.set_title('')
-plt.show(block=False)
+plt.tight_layout()
+plt.show()

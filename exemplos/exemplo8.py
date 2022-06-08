@@ -32,4 +32,4 @@ for ax in p.axes.flat:
     ax.add_feature(BORDERS)
     ax.set_extent([-75, -33, -33.5, 6])
 
-plt.show(block=False)
+plt.show()

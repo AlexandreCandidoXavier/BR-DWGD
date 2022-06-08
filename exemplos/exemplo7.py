@@ -85,4 +85,5 @@ axes[0, 2].set_title('Prec - ETo')
 
 fig.suptitle(u'Diferença sazonal entre precipitação e ETo',
              fontsize=16, y=.98)
-plt.show(block=False)
+plt.tight_layout()
+plt.show()

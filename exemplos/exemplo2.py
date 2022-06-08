@@ -15,7 +15,7 @@ Tmax_19610101_19801231_BR-DWGD_UFES_UTEXAS_v_X.XX.nc
 # versoes
 print(xr.__version__) # 0.17.0
 print(np.__version__) # 1.20.2
-print (pd.__version__) # 1.2.4
+print(pd.__version__) # 1.2.4
 
 # set correct path of the variables
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
