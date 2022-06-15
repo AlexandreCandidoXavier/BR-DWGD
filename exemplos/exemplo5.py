@@ -11,7 +11,7 @@ Arquivos:
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 var = xr.open_mfdataset(path_var + 'Tmax*.nc')['Tmax'].sel(time=slice('1990-01-01','2019-12-31'))
 
-# Nome dos pontos
+# Nome e posicao dos pontos
 posicoes = {'INPE-SP': [-23.2, -45.9],
             'UFCG-PB': [-7.2, -35.9],
             'UFC-CE': [-3.85, -38.6]}

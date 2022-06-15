@@ -4,7 +4,7 @@ import pandas as pd
 import time
 
 """
-Exportando dados de todas as variaveis para determinadas posicoes geograficas. 
+Exportando dados de todas as variaveis para uma regiao.
 """
 
 # limits of the area
