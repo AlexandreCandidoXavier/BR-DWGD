@@ -27,7 +27,8 @@ def rawData(var2get_xr, var_name2get):
 
 # getting data from NetCDF files
 for n, var_name2get in enumerate(var_names):
-    var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', combine='nested', concat_dim='time')
+    print(n)
+    var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc')
     if n == 0:
         var_ar = rawData(var2get_xr, var_name2get)
         n_lines = var_ar.shape[0]
