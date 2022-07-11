@@ -7,9 +7,12 @@ import time
 Exportando dados de todas as variaveis para uma regiao.
 """
 
+# periodo para ser exportado
+date_start, date_end = '1985-01-01', '2020-07-31'
+
 # limits of the area
-lat_min, lat_max = -18.8, -15.5
-lon_min, lon_max = -41.7, -38.2
+lat_min, lat_max = -12.64, -12.25
+lon_min, lon_max = -38.96, -38.59
 
 # variables names
 var_names = ['Rs', 'u2','Tmax', 'Tmin', 'RH', 'pr', 'ETo']
@@ -18,7 +21,7 @@ var_names = ['Rs', 'u2','Tmax', 'Tmin', 'RH', 'pr', 'ETo']
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 
 # latitude and longitude of GRID
-var = xr.open_mfdataset(path_var + 'pr*.nc', combine='nested', concat_dim='time')
+var = xr.open_mfdataset(path_var + 'pr*.nc')
 latitude = var.latitude.values
 longitude = var.longitude.values
 
@@ -30,8 +33,6 @@ lon = longitude[np.array(np.nonzero((longitude >= lon_min) &
 lon, lat = np.meshgrid(lon, lat)
 lon, lat = lon.flatten(), lat.flatten()
 
-a = 1
-date_start, date_end = '1980-01-01', '2019-12-31'
 # function to read the netcdf files
 def rawData(var2get_xr, var_name2get):
     return var2get_xr[var_name2get].loc[dict(time=slice(date_start, date_end))].sel(longitude=xr.DataArray(lon, dims='z'),
