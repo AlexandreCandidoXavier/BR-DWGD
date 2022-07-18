@@ -10,8 +10,8 @@ Exportando dados de todas as variaveis para determinadas posicoes geograficas.
 # Posicoes: Colocar em ordem, separando por virgula. Neste exemplo temos dois pontos em que as coordenadas
 # (lat, lon) sao (-20.6,-44.6) e  (-21.0, -44.1), respectivamente para o primeiro e segundo ponto.
 # Pode-se colocar quantos pontos quiser, apenas separe por virgula.
-lat = [-20.6, -21.0]
-lon = [-44.6, -44.1]
+lat = [-11.71]
+lon = [-61.73]
 
 # variables names
 var_names = ['Rs', 'u2','Tmax', 'Tmin', 'RH', 'pr', 'ETo']

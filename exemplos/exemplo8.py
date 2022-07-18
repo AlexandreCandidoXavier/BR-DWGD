@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 from cartopy.feature import NaturalEarthFeature, BORDERS
 
-""" Abrindo e plotando a normal da temperatura media do mês janeiro, período 1961/01/01-1989/12/31, 
+""" Abrindo e plotando a normal da temperatura media do mês janeiro, período 1961/01/01-1989/12/31 
 """
 
 # pegando Tmax e Tmin, v2.1 e calculando as msuas respectivas medias mensais
