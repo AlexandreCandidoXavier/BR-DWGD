@@ -7,10 +7,6 @@ Todos os arquivos da variavel diarios de Rs sao necessarios, ou seja,
 os de controle tambem
 """
 
-# versoes
-print(xr.__version__) # 0.17.0
-print(plt.__version__) # 1.20.2
-
 # set correct path of the variables
 path_var =  '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 
