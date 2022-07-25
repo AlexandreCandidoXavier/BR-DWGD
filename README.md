@@ -6,8 +6,9 @@ Para a *homepage* dos dados contendo informações sobre atualizações:
 
 [https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0](https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0)
 
-**NOTA**: Para rodar os códigos abaixo, será necessário +-6GB de memória
-RAM livre.
+<p><strong><span style="color: #ff0000;">NOTA: 
+</span></strong><span style="color: #ff0000;">Para rodar os códigos abaixo, será necessário &plusmn;6GB de memória
+RAM livre.</span></p>
 
 # Download da grade (BR-DWGD)
 [**Aqui**](https://drive.google.com/drive/folders/11-qnvwojirAtaQxSE03N0_SUrbcsz44N)
