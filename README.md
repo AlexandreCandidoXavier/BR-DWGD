@@ -10,6 +10,7 @@ Para a *homepage* dos dados contendo informações sobre atualizações:
 </span></strong><span style="color: #ff0000;">Para rodar os códigos abaixo, será necessário &plusmn;6GB de memória
 RAM livre.</span></p>
 
+asd
 # Download da grade (BR-DWGD)
 [**Aqui**](https://drive.google.com/drive/folders/11-qnvwojirAtaQxSE03N0_SUrbcsz44N)
 
