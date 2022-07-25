@@ -4,11 +4,15 @@ import pandas as pd
 import time
 
 """
-Exportando dados de todas as variaveis para uma regiao.
+Exportando dados DIÁRIOS de todas as variaveis para uma regiao, onde se conhece os 
+limites da região e período de tempo dos dados à ser exportado.
 """
 
+# set correct path of the netcdf files
+path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+
 # periodo para ser exportado
-date_start, date_end = '1985-01-01', '2020-07-31'
+date_start, date_end = '1961-01-01', '2020-07-31'
 
 # limits of the area
 lat_min, lat_max = -12.64, -12.25
@@ -16,9 +20,6 @@ lon_min, lon_max = -38.96, -38.59
 
 # variables names
 var_names = ['Rs', 'u2','Tmax', 'Tmin', 'RH', 'pr', 'ETo']
-
-# set correct path of the netcdf files
-path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 
 # latitude and longitude of GRID
 var = xr.open_mfdataset(path_var + 'pr*.nc')
@@ -41,7 +42,7 @@ def rawData(var2get_xr, var_name2get):
 
 # getting data from NetCDF files
 for n, var_name2get in enumerate(var_names):
-    print(n)
+    print("lendo: " + var_name2get)
     var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').chunk(chunks={"time": 400})
     if n == 0:
         var_ar = rawData(var2get_xr, var_name2get)
@@ -52,8 +53,8 @@ for n, var_name2get in enumerate(var_names):
 
 # saving
 for n in range(len(lat)):
-    print('arquivo {} de um total de {}'.format(n+1, len(lat)))
     name_file = 'lat{:.2f}_lon{:.2f}.csv'.format(lat[n], lon[n])
+    print(f'arquivo {n + 1} de um total de {len(lat)}; nome do arquivo: {name_file}')
     print(name_file)
     if ~np.isnan(var_ar[0, n]):
         file = var_ar[:, n::len(lon)]
