@@ -6,6 +6,9 @@ Para a *homepage* dos dados contendo informações sobre atualizações:
 
 [https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0](https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0)
 
+**NOTA**: Para rodar os códigos abaixo, será necessário +-6GB de memória
+RAM livre.
+
 # Download da grade (BR-DWGD)
 [**Aqui**](https://drive.google.com/drive/folders/11-qnvwojirAtaQxSE03N0_SUrbcsz44N)
 
@@ -17,22 +20,14 @@ Xavier, A. C., Scanlon, B. R., King, C. W., & Alves, A. I. (2022). New improved 
 
 # Exportando dados para arquivos csv
 
- Markup : 1. A numbered list
-              1. A nested numbered list
-              2. Which is numbered
-          2. Which is numbered
-
 Para exportar em *csv*:
 
-Markup :  1.dados de pontos específicos:**
-
-a. escala diária [export2cvs_daily_points.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2cvs_daily_points.py)
-b. escala mensal [export2cvs_monthly_points.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2cvs_monthly_points.py)
-
-**todos os dados de uma região, dado o limite geográfico:**
-
-a. escala diária [export2csv_daily_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_daily_region.py)
-b. escala mensal [export2csv_monthly_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_monthly_region.py)
+1. **todas as variáveis de pontos específicos, na escala:**
+   1. diária [export2cvs_daily_points.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2cvs_daily_points.py)
+   2. mensal [export2cvs_monthly_points.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2cvs_monthly_points.py)
+2. **todos os dados de uma região, dado o limite geográfico, na escala:**
+   1. diária [export2csv_daily_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_daily_region.py)
+   2. mensal [export2csv_monthly_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_monthly_region.py)
 
 # Os resultados gráficos dos scripts
 
