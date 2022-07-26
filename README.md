@@ -10,7 +10,6 @@ Para a *homepage* dos dados contendo informações sobre atualizações:
 </span></strong><span style="color: #ff0000;">Para rodar os códigos abaixo, será necessário &plusmn;6GB de memória
 RAM livre.</span></p>
 
-asd
 # Download da grade (BR-DWGD)
 [**Aqui**](https://drive.google.com/drive/folders/11-qnvwojirAtaQxSE03N0_SUrbcsz44N)
 
@@ -24,10 +23,10 @@ Xavier, A. C., Scanlon, B. R., King, C. W., & Alves, A. I. (2022). New improved 
 
 Para exportar em *csv*:
 
-1. **todas as variáveis de pontos específicos, na escala:**
+1. **todas as variáveis de pontos geográficos específicos, na escala de tempo:**
    1. diária [export2cvs_daily_points.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2cvs_daily_points.py)
    2. mensal [export2cvs_monthly_points.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2cvs_monthly_points.py)
-2. **todos os dados de uma região, dado o limite geográfico, na escala:**
+2. **todas as variáveis, de todas as células, em uma região com limite geográfico conhecido, na escala de tempo:**
    1. diária [export2csv_daily_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_daily_region.py)
    2. mensal [export2csv_monthly_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_monthly_region.py)
 
