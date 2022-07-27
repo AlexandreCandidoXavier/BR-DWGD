@@ -1,25 +1,27 @@
 # Brazilian Daily  Weather Gridded  Data (BR-DWGD)
-Estes códigos têm com objetivo demonstrar algumas possibilidade usos da grade
+Estes códigos pretendem demonstrar algumas possibilidades de utilização da grade
 BR-DWGD por meio da linguagem Python. Encontrando erros, por favor entrar em contato (alexandre.xavier@ufes.br).
 
-Para a *homepage* dos dados contendo informações sobre atualizações:
-
-[https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0](https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0)
 
 <p><strong><span style="color: #ff0000;">NOTA: 
 </span></strong><span style="color: #ff0000;">Para rodar os códigos abaixo, será necessário &plusmn;6GB de memória
 RAM livre.</span></p>
 
-# Download da grade (BR-DWGD)
+## Informações sobre atualizações da **BR-DWGB**
+
+[https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0](https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0)
+
+## Download da grade (BR-DWGD)
 [**Aqui**](https://drive.google.com/drive/folders/11-qnvwojirAtaQxSE03N0_SUrbcsz44N)
 
-# Citação dos dados
+## Citação dos dados
+
 Caso venha a utilizar os dados, solicitamos que seja devidamente citado como:
 
 Xavier, A. C., Scanlon, B. R., King, C. W., & Alves, A. I. (2022). New improved Brazilian daily weather gridded data
 (1961–2020). **International Journal of Climatology**, 1–15. https://doi.org/10.1002/joc.7731
 
-# Exportando dados para arquivos csv
+## Exportando dados para arquivos csv
 
 Para exportar em *csv*:
 
@@ -30,7 +32,7 @@ Para exportar em *csv*:
    1. diária [export2csv_daily_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_daily_region.py)
    2. mensal [export2csv_monthly_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_monthly_region.py)
 
-# Os resultados gráficos dos scripts
+## Resultados gráficos dos scripts
 
 [exemplo1.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo1.py) Plotando dados e controles
 
