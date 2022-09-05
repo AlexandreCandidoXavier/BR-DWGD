@@ -18,8 +18,8 @@ path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 date_start, date_end = '1961-01-01', '2020-07-31'
 
 # limits of the area
-lat_min, lat_max = -12.64, -12.25
-lon_min, lon_max = -38.96, -38.59
+lat_min, lat_max = -17.4, -15.7
+lon_min, lon_max = -40.5, -38.9
 
 # variables names
 var_names = ['Rs', 'u2','Tmax', 'Tmin', 'RH', 'pr', 'ETo']
