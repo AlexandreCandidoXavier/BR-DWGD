@@ -27,9 +27,11 @@ tmin_month = tmin.sel(time=slice(day_first, day_last)).groupby('time.month').mea
 
 # calculado as medias mensais
 tas_BRDWGD = (tmax_month + tmin_month) / 2
-
 tas_BRDWGD.coords['longitude'] = tas_BRDWGD.coords['longitude'] + 360
 
+# pesos
+weights = np.cos(np.deg2rad(tas_BRDWGD.latitude))
+weights.name = "weights"
 
 # criando mascara para o continente e mar
 mask_ocean = 2 * np.ones(tas_BRDWGD.shape[1:]) * np.isnan(tas_BRDWGD.isel(month=0))
@@ -38,9 +40,10 @@ mask_array = mask_ocean + mask_land
 
 # incorporando mascara
 tas_BRDWGD.coords['mask'] = (('latitude', 'longitude'), mask_array)
+tas_BRDWGD_w = tas_BRDWGD.weighted(weights)
 tas_BRDWGD = tas_BRDWGD.to_dataset(name='tas')
-
-df_results = pd.DataFrame(tas_BRDWGD.tas.mean(['latitude', 'longitude']).values, columns=['tas'])
+# calculo das médias mensail para todo Brasil
+df_results = pd.DataFrame(tas_BRDWGD_w.mean(['latitude', 'longitude']).values, columns=['tas'])
 df_results['month'] = months
 df_results['source_id'] = 'BR-DWGD'
 df_results['institution_id'] = 'UFES'
@@ -114,9 +117,10 @@ print('Quantidade de modelos em df_historical:', len(df_historical))
 # lendo dos dados das normais mensais
 nc_files = glob.glob(path2save_nc_file + "*.nc")
 for nc_file in nc_files:
+    print(nc_file)
     tas_avg_hist = xr.open_mfdataset(nc_file)
     source_id = nc_file.split("/")[-1].split("_")[0]
-    df_tas_avg_hist = pd.DataFrame(tas_avg_hist.tas.mean(['latitude', 'longitude']), columns=['tas'])
+    df_tas_avg_hist = pd.DataFrame(tas_avg_hist.tas.weighted(weights).mean(['latitude', 'longitude']), columns=['tas'])
     df_tas_avg_hist['month'] = months
     df_tas_avg_hist['source_id'] = source_id
     df_tas_avg_hist['institution_id'] = df_historical.loc[df_historical.source_id == source_id].institution_id.values[0]
@@ -130,7 +134,7 @@ x = df_results.loc[df_results["source_id"]=="BR-DWGD", "tas"]
 
 source_ids = np.unique(df_results.loc[:, "source_id"].values)
 source_ids = source_ids[source_ids != "BR-DWGD"]
-
+vars = ['Bias', 'R', 'RMSE']
 liga = True
 for source_id in source_ids:
     y = df_results.loc[df_results["source_id"]==source_id, "tas"]
@@ -138,32 +142,36 @@ for source_id in source_ids:
     correlation = np.corrcoef(y, x)[1, 0]
     rmse = np.sqrt(((y - x)**2).mean())
     if liga:
-        statisticas = pd.DataFrame([[bias, correlation, rmse]], columns=['Bias', 'R', 'RMSE'])
+        statisticas = pd.DataFrame([[bias, correlation, rmse]], columns=vars)
         statisticas['source_id'] = source_id
         liga = False
     else:
-        statisticas_n = pd.DataFrame([[bias, correlation, rmse]], columns=['Bias', 'R', 'RMSE'])
+        statisticas_n = pd.DataFrame([[bias, correlation, rmse]], columns=vars)
         statisticas_n ['source_id'] = source_id
         statisticas = pd.concat([statisticas, statisticas_n])
-
-vars = ['Bias', 'R', 'RMSE']
-fig, axes = plt.subplots(1, 3, figsize=(3,12))
-for n, var in enumerate(vars):
-    sns.heatmap(pd.DataFrame(statisticas.loc[:, var].values, index=statisticas.loc[:, "source_id"].values,
-                             columns=[var]), ax=axes[n], cbar_kws = dict(use_gridspec=False,location="bottom"))
-    if n == 0:
-        axes[n].set_yticks(range(len(var)))
-        axes[n].set_yticklabels(statisticas.loc[:, "source_id"].values)
-    else:
-        axes[n].set_yticklabels('')
-
 
 statisticas['R_rank'] = statisticas['R'].rank(ascending=False).astype(int)
 statisticas['Bias_rank'] = abs(statisticas['Bias']).rank().astype(int)
 statisticas['RMSE_rank'] = statisticas['RMSE'].rank().astype(int)
 statisticas['AV rank'] = statisticas[['R_rank', 'Bias_rank', 'RMSE_rank']].mean(1)
 statisticas.sort_values(by=['AV rank'], inplace=True)
+statisticas.reset_index(inplace=True)
 # statisticas.set_index("source_id", inplace=True)
+
+fig, axes = plt.subplots(1, 3, figsize=(3,12))
+n2plot = 20
+for n, var in enumerate(vars):
+    sns.heatmap(pd.DataFrame(statisticas.loc[:n2plot, var].values, index=statisticas.loc[:n2plot, "source_id"].values,
+                             columns=[var]), ax=axes[n],
+                             cbar_kws = dict(use_gridspec=False,orientation="horizontal"))
+    if n == 0:
+        axes[n].set_yticks(np.arange(0.5, n2plot+1, 1))
+        axes[n].set_yticklabels(statisticas.loc[:n2plot, "source_id"].values)
+    else:
+        axes[n].set_yticklabels('')
+
+
+
 
 # plotando os 10 melhores
 # dados observados

@@ -4,7 +4,7 @@ BR-DWGD por meio da linguagem Python. Encontrando erros, por favor entrar em con
 
 
 <p><strong><span style="color: #ff0000;">NOTA: 
-</span></strong><span style="color: #ff0000;">Para rodar os códigos abaixo, será necessário &plusmn;6GB de memória
+</span></strong><span style="color: #ff0000;">Para rodar os códigos abaixo, serão necessários &plusmn;6GB de memória
 RAM livre.</span></p>
 
 ## Informações sobre atualizações da **BR-DWGB**
