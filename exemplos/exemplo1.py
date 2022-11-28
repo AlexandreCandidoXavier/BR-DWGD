@@ -8,7 +8,8 @@ os de controle tambem
 """
 
 # set correct path of the variables
-path_var =  '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+
 
 # set correct path of the controls
 path_control = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/Controls/'
