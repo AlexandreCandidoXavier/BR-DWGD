@@ -24,10 +24,7 @@ mask_array = (mask_ocean + mask_land).values
 # incorporando mascara em ETo
 ETo.coords['mask'] = xr.DataArray(mask_array, dims=('latitude', 'longitude'))
 
-# # definindo limites estaduais
-# states = NaturalEarthFeature(category='cultural', scale='50m',
-#                              facecolor='none',
-#                              name='admin_1_states_provinces_shp')
+# definindo limites estaduais
 states = cfeature.STATES.with_scale('50m')
 
 # intervalo da seria historica para os calculos e
