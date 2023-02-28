@@ -29,4 +29,4 @@ for city, cityCoord in cityInformation.items():
 plt.ylim(1, 8)
 plt.title('')
 plt.legend(ncol=2)
-plt.show(block=False)
+plt.show()

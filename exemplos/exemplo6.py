@@ -19,6 +19,7 @@ count = ds['count']
 # nome e posicoes dos pontos
 posicoes = {'Sorriso-MT': [-12.5, -55.7],
             'Campinas-SP': [-22.8, -47.0]}
+
 # plotando distancia do pluviometro mais proximo, ao longo do tempo,
 # que foi utilizado na interpolacao
 _, (ax1, ax2) = plt.subplots(2, 1)

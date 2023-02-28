@@ -20,4 +20,4 @@ RH_mean_month = RH_data.groupby('time.month').mean('time')
 # plotando
 RH_mean_month.plot(x='longitude', y='latitude', col='month',
                    cmap='RdBu', col_wrap=4)
-plt.show(block=False)
+plt.show()

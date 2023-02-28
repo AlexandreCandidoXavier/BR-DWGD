@@ -83,6 +83,7 @@ plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
        ncol=2, mode="expand", borderaxespad=0.)
 plt.xlim(1960,2021)
 plt.tight_layout()
+plt.show()
 
 # estatisticas por regiao na variavel "stat_region"
 df_all['year_ano'] = df_all['year']

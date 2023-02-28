@@ -36,10 +36,10 @@ weights.name = "weights"
 # criando mascara para o continente e mar
 mask_ocean = 2 * np.ones(tas_BRDWGD.shape[1:]) * np.isnan(tas_BRDWGD.isel(month=0))
 mask_land = 1 * np.ones(tas_BRDWGD.shape[1:]) * ~np.isnan(tas_BRDWGD.isel(month=0))
-mask_array = mask_ocean + mask_land
+mask_array = (mask_ocean + mask_land).values
 
 # incorporando mascara
-tas_BRDWGD.coords['mask'] = (('latitude', 'longitude'), mask_array)
+tas_BRDWGD.coords['mask'] = xr.DataArray( mask_array, dims=('latitude', 'longitude'))
 tas_BRDWGD_w = tas_BRDWGD.weighted(weights)
 tas_BRDWGD = tas_BRDWGD.to_dataset(name='tas')
 # calculo das médias mensail para todo Brasil

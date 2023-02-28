@@ -13,9 +13,9 @@ Tmax_19610101_19801231_BR-DWGD_UFES_UTEXAS_v_X.XX.nc
 """
 
 # versoes
-print(xr.__version__) # 0.17.0
-print(np.__version__) # 1.20.2
-print(pd.__version__) # 1.2.4
+print(xr.__version__) # 2022.11.0
+print(np.__version__) # 1.23.4
+print(pd.__version__) # 1.5.1
 
 # set correct path of the variables
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
@@ -34,7 +34,7 @@ Tmax_data_temporal.plot(ax=ax1, linewidth=.3)
 # plotando a media mensal
 Tmax_mean_month = Tmax_data_temporal.groupby('time.month').mean('time')
 Tmax_mean_month.plot(ax=ax2)
-plt.show(block=False)
+plt.show()
 
 # exportando dados diarios em cvs: nome do arquivo 'Tmax.cvs'
 fileName = 'Tmax.csv'

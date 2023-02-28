@@ -1,11 +1,10 @@
 import xarray as xr
 import matplotlib.pyplot as plt
 import numpy as np
-from cartopy.feature import NaturalEarthFeature, BORDERS
+from cartopy.feature import BORDERS
+import cartopy.feature as cfeature
 import cartopy.crs as ccrs
-#from matplotlib.axes import Axes
-#from cartopy.mpl.geoaxes import GeoAxes
-#GeoAxes._pcolormesh_patched = Axes.pcolormesh
+
 
 """ Calculo da diferenca sazonal entre a precipitacao e a 
 ET0 para o Brasil utilizando os dados gradeados 
@@ -20,15 +19,16 @@ prec = xr.open_mfdataset(path_var + 'pr*.nc')
 # criando mascara para o continente e mar
 mask_ocean = 2 * np.ones(prec['pr'].shape[1:]) * np.isnan(prec['pr'].isel(time=0))
 mask_land = 1 * np.ones(prec['pr'].shape[1:]) * ~np.isnan(prec['pr'].isel(time=0))
-mask_array = mask_ocean + mask_land
+mask_array = (mask_ocean + mask_land).values
 
 # incorporando mascara em ETo
-ETo.coords['mask'] = (('latitude', 'longitude'), mask_array)
+ETo.coords['mask'] = xr.DataArray(mask_array, dims=('latitude', 'longitude'))
 
-# definindo limites estaduais
-states = NaturalEarthFeature(category='cultural', scale='50m',
-                             facecolor='none',
-                             name='admin_1_states_provinces_shp')
+# # definindo limites estaduais
+# states = NaturalEarthFeature(category='cultural', scale='50m',
+#                              facecolor='none',
+#                              name='admin_1_states_provinces_shp')
+states = cfeature.STATES.with_scale('50m')
 
 # intervalo da seria historica para os calculos e
 # reamostrando para a media mensal diaria
@@ -47,7 +47,7 @@ diff = precSeason - EToSeason
 # plotando
 fig, axes = plt.subplots(nrows=4, ncols=3,
                          figsize=(8, 8),
-                         subplot_kw={'projection':ccrs.PlateCarree()})
+                         subplot_kw={'projection': ccrs.PlateCarree()})
 
 for i, season in enumerate(('DJF', 'MAM', 'JJA', 'SON')):
     precSeason.where(ETo.mask == 1).sel(season=season).plot(
