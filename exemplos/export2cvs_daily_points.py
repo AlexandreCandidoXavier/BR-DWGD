@@ -6,6 +6,8 @@ import time
 """
 Exportando dados DIÁRIOS de todas as variaveis para determinadas posicoes/pontos geograficas. 
 """
+# periodo para ser exportado
+date_start, date_end = '1961-01-01', '2020-07-31'
 
 # set correct path of the netcdf files
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
@@ -21,7 +23,7 @@ var_names = ['Rs', 'u2','Tmax', 'Tmin', 'RH', 'pr', 'ETo']
 
 # function to read the netcdf files
 def rawData(var2get_xr, var_name2get):
-    return var2get_xr[var_name2get].sel(longitude=xr.DataArray(lon, dims='z'),
+    return var2get_xr[var_name2get].loc[dict(time=slice(date_start, date_end))].sel(longitude=xr.DataArray(lon, dims='z'),
                                           latitude=xr.DataArray(lat, dims='z'),
                                           method='nearest').values
 
