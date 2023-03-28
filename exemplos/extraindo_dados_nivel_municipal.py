@@ -67,7 +67,6 @@ mask = municipios_mask_poly.mask(var_resample_extrapolado.isel(time=0),
 # var.isel(time=-10).plot(ax=ax)
 # municipios.boundary.plot(ax=ax)
 
-municipios_data_pandas = np.empty((len(var_resample_extrapolado.time)))
 
 def coletando_dados(n, mask, lon, lat, municipios_data_pandas):
     # print(n)
@@ -94,29 +93,25 @@ def coletando_dados(n, mask, lon, lat, municipios_data_pandas):
 
     else:
         print(f'não tem célula dentro do limite: {n}')
-        # centroid = municipios.centroid[municipios[n].name == municipios.CD_MUN]
         lon_municipios, lat_municipios = municipios_centroid_x[n], municipios_centroid_y[n]
         out_sel = var_resample_extrapolado.sel(latitude=lat_municipios,
                                    longitude=lon_municipios, method='nearest')
         municipios_data_pandas = out_sel.values
-    #     saida = out_sel.values
-    #
+
+
     return municipios_data_pandas
 
 
+
+
+municipios_data_pandas = np.empty((len(var_resample_extrapolado.time)))
 lat = mask.latitude.values
 lon = mask.longitude.values
 
 # start = time.time()
-# b = []
-# for n in range(219, 220):
-#     municipios_data_pandas = np.empty((len(var_resample_extrapolado.time)))
-#     c = coletando_dados(n, mask, lon, lat, municipios_data_pandas)
-#     b.append(c)
-#
+# c = coletando_dados(n, mask, lon, lat, municipios_data_pandas)
 # print(time.time() - start)
 
-municipios_data_pandas = np.empty((len(var_resample_extrapolado.time)))
 saida = Parallel(n_jobs=-1, verbose=4)(delayed(coletando_dados)(n, mask, lon, lat, municipios_data_pandas)
                                        for n in range(len(municipios.CD_MUN)))  # municipios_data_pandas.shape[0]
 
@@ -135,14 +130,15 @@ municipios_data.set_index(municipios.index)
 municipios = pd.concat((municipios, municipios_data), axis=1)
 
 
-# plotando o mes de janeiro de 1961
+# plotando o mês de janeiro de 1961, extrapolando, e em nível municipal
 fig, axes = plt.subplots(1, 3, figsize=(15, 4))
 time = '1961-01-31'
 var_resample.sel(time=time).plot(ax=axes[0])
-axes[0].set_title("prec = " + "1961-1")
+axes[0].set_title(f"prec ({time[:7]})")
 var_resample_extrapolado.sel(time=time).plot(ax=axes[1])
-axes[1].set_title("prec_extrap = " + "1961-1")
+axes[1].set_title(f"prec_extrap ({time[:7]})")
 municipios.plot(ax=axes[2], column="1961-1")
+axes[2].set_title("Prec municipal em " + "1961-1")
 
 # gravando
 name2save = 'preci_muni_mensal.geojson' # para shapefile: 'preci_muni_mensal.shp'
