@@ -31,6 +31,14 @@ Para exportar em *csv*:
 2. **todas as variáveis, de todas as células, em uma região com limite geográfico conhecido, na escala de tempo:**
    1. diária [export2csv_daily_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_daily_region.py)
    2. mensal [export2csv_monthly_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_monthly_region.py)
+   
+## Para exportar em *geojson* ou *shp* em nível municipal MENSAL
+
+O exemplo é para precipitação acumulada mensal. Para outra variável, modificar
+a linha 52 do código [extraindo_dados_nivel_municipal.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/extraindo_dados_nivel_municipal.py).
+Para ter a média mensal, usar linha 84.
+
+![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/extracao_municipal.jpeg)
 
 ## Resultados gráficos dos scripts
 
