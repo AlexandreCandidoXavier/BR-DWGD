@@ -34,17 +34,20 @@ Para exportar em *csv*:
    
 ## Para exportar em *geojson*, *shp* ou *gpkg* em nível municipal
 
-O exemplo do código [extraindo_dados_nivel_municipal.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/extraindo_dados_nivel_municipal.py)
-é extraida a precipitação acumulada mensal de todos os municípios do Brasil,
-e exportado para um arquivo formato *geojson*.
+No exemplo do código [extraindo_dados_nivel_municipal.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/extraindo_dados_nivel_municipal.py),
+é extraida a precipitação acumulada mensal de todos os municípios do Brasil 
+(jan/1961-dec/2022), e estes dados, exportados para um arquivo formato *geojson*.
 Para modificar:
 
 1. a variável que vai ser utilizada, ver **linha 47**;
 2. a escala de tempo, ver **linha 50** e;
 3. o formato a ser exportado (*shapefile*, *geojson* ou *gpkg*), ver **linha 54**;
-4. se a variável var ser acumulada ou o valor médio do período, ver **linha 84-87**.
+4. se a variável é para ser acumulada ou o valor médio do período, ver **linha 84-87**.
 
-Resultado gráfico do código, apenas para exemplificar o procedimento.
+Resultado gráfico do código, apenas para exemplificar o procedimento: (*i*)
+a precipitação acumulada para jan/1961; (*ii*) a precipitação acumulada 
+extrapolada para jan/1961 e; (*iii*) precipitação acumulada para jan/1961
+em nível municipal.
 
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/extracao_municipal.jpeg)
 
