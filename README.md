@@ -32,11 +32,19 @@ Para exportar em *csv*:
    1. diária [export2csv_daily_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_daily_region.py)
    2. mensal [export2csv_monthly_region.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/export2csv_monthly_region.py)
    
-## Para exportar em *geojson* ou *shp* em nível municipal MENSAL
+## Para exportar em *geojson*, *shp* ou *gpkg* em nível municipal
 
-O exemplo é para precipitação acumulada mensal. Para outra variável, modificar
-a linha 52 do código [extraindo_dados_nivel_municipal.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/extraindo_dados_nivel_municipal.py).
-Para ter a média mensal, usar linha 84.
+O exemplo do código [extraindo_dados_nivel_municipal.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/extraindo_dados_nivel_municipal.py)
+é extraida a precipitação acumulada mensal de todos os municípios do Brasil,
+e exportado para um arquivo formato *geojson*.
+Para modificar:
+
+1. a variável que vai ser utilizada, ver **linha 47**;
+2. a escala de tempo, ver **linha 50** e;
+3. o formato a ser exportado (*shapefile*, *geojson* ou *gpkg*), ver **linha 54**;
+4. se a variável var ser acumulada ou o valor médio do período, ver **linha 84-87**.
+
+Resultado gráfico do código, apenas para exemplificar o procedimento.
 
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/extracao_municipal.jpeg)
 

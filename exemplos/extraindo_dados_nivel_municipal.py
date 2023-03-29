@@ -8,14 +8,17 @@ import geopandas as gpd
 from joblib import Parallel, delayed
 import rioxarray
 
-# Extração dados MENSAIS de precipitação em nível municipal para o Brasil.
-# Valor médio das células da grade que estão dentro do limite do município.
+# Neste exemplo é apresentado a geração de arquivos formatos
+# "geojson", "shape" ou gpkg,  da variável precipitação, acumulada
+# em nível municipal para o Brasil. A escala de tempo pode ser
+# mensal ou anual, entre outras. O valor mensal de cada município é a
+# média das células da grade que estão dentro do limite deste.
 # Dependendo do computador, pode ser um pouco demorado,
-# no meu demora ~15 min (Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz; 12 processadores)
+# no meu, roda em ~15 min (Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz; 12 processadores)
 # Shape dos municípios obtidos em em:
 # https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html?=&t=acesso-ao-produto
 # Geometria dos municípios foi simplificada em: https://mapshaper.org/
-# Arquivos shapes encontrados no diretório: /exemplos/shape_file/
+# Arquivos shapes utilizados para este código, em: /exemplos/shape_file/
 
 
 def coletando_dados(n, mask, lon, lat, municipios_data_pandas):
@@ -29,13 +32,6 @@ def coletando_dados(n, mask, lon, lat, municipios_data_pandas):
 
         for k in range(out_sel.shape[0]):
             municipios_data_pandas[k] = np.nanmean(out_sel[k].values)
-
-        # plt.figure(figsize=(12, 8))
-        # ax = plt.axes()
-        # out_sel.isel(time=0).plot(ax=ax)
-        # municipios.plot(ax=ax, alpha=0.8, facecolor='none')
-        # ax.axis(xmin=-64, xmax=-36, ymin=-32, ymax=-6)
-        # plt.close("all")
 
     else:
         lon_municipios, lat_municipios = municipios_centroid_x[n], municipios_centroid_y[n]
@@ -53,6 +49,10 @@ nvar2get = 'pr'
 # escala para amostragem "M" para mesal e "Y" para anual
 time_scale = "M"
 
+# Nome e tipo de arquivo para exportar os dados municipais
+# Para formato shapefile: 'preci_muni_mensal.shp' ou gpkg: 'preci_muni_mensal.pkg'
+name2save = 'preci_muni_mensal.geojson'
+
 # caminho dos arquivos NetCDF da grade BR-DWGD
 path_netcdf = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 var = xr.open_mfdataset(path_netcdf + nvar2get + '*.nc')[nvar2get]
@@ -61,8 +61,8 @@ var = xr.open_mfdataset(path_netcdf + nvar2get + '*.nc')[nvar2get]
 path = os.path.join(os.getcwd(), 'shape_file/BR_Municipios_2021.shp')
 municipios = gpd.read_file(path)
 
-# cetróides dos municípios para serem utilizados quando não há
-# o município é muito pequeno e não tem célula da grade dentro.
+# centróides dos municípios para serem utilizados quando
+# o município é muito pequeno e não há célula da grade dentro.
 # Vai pegar da célula mais próxima ao centroide do município
 municipios_centroid_x = municipios.to_crs(epsg=5641).centroid.to_crs(municipios.crs).x.values
 municipios_centroid_y = municipios.to_crs(epsg=5641).centroid.to_crs(municipios.crs).y.values
@@ -81,9 +81,10 @@ mask_array = (mask_ocean + mask_land).values
 
 var.coords['mask'] = xr.DataArray(mask_array, dims=('latitude', 'longitude'))
 
-# reamostrando para mensal (time="M"), para anual usar (time='Y')
+# reamostrando para mensal. Para acumulado e média do período, use
+# respectivamente, sum('time') e mean('time')
 var_resample = var.resample(time=time_scale).sum('time').where(var.mask == 1).compute()
-# var_resample = var.resample(time=time_scale).mean('time').where(var.mask == 1).compute()
+# var_resample = var.resample(time=time_scale).mean('time').where(var.mask == 1).compute() # para média
 
 # Extrapolando, para que municípios que estão no limite do Brasil tenham dados.
 var_resample.rio.write_nodata(np.nan, inplace=True)
@@ -121,17 +122,16 @@ for n in range(len(municipios.CD_MUN)):
 municipios_data.set_index(municipios.index)
 municipios = pd.concat((municipios, municipios_data), axis=1)
 
-# gravando.Para shapefile: 'preci_muni_mensal.shp'
-name2save = 'preci_muni_mensal.geojson'
+# gravando
 municipios.to_file(name2save)
 
 # plotando o mês de janeiro de 1961, extrapolado, e em nível municipal
 fig, axes = plt.subplots(1, 3, figsize=(15, 4))
-time = '1961-01-31'
+time = '1961-12-31' # se time_scale = "Y" então: time = "1961-12-31"
 var_resample.sel(time=time).plot(ax=axes[0])
 axes[0].set_title(f"prec ({time[:7]})")
 var_resample_extrapolado.sel(time=time).plot(ax=axes[1])
 axes[1].set_title(f"prec_extrap ({time[:7]})")
-municipios.plot(ax=axes[2], column="1961-1")
-axes[2].set_title("Prec municipal em " + "1961-1")
+municipios.plot(ax=axes[2], column="1961-1", legend=True) # se time_scale = "Y" então: column="1961-12"
+axes[2].set_title("Prec municipal" + "1961-1")
 print("acabou")
