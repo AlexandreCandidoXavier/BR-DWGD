@@ -50,7 +50,7 @@ nvar2get = 'pr'
 time_scale = "M"
 
 # Nome e tipo de arquivo para exportar os dados municipais
-# Para formato shapefile: 'preci_muni_mensal.shp' ou gpkg: 'preci_muni_mensal.pkg'
+# Para formato shapefile: 'preci_muni_mensal.shp' ou gpkg: 'preci_muni_mensal.gpkg'
 name2save = 'preci_muni_mensal.geojson'
 
 # caminho dos arquivos NetCDF da grade BR-DWGD
@@ -81,7 +81,7 @@ mask_array = (mask_ocean + mask_land).values
 
 var.coords['mask'] = xr.DataArray(mask_array, dims=('latitude', 'longitude'))
 
-# reamostrando para mensal. Para acumulado e média do período, use
+# reamostrando para mensal. Para acumulado e média do período, use,
 # respectivamente, sum('time') e mean('time')
 var_resample = var.resample(time=time_scale).sum('time').where(var.mask == 1).compute()
 # var_resample = var.resample(time=time_scale).mean('time').where(var.mask == 1).compute() # para média
