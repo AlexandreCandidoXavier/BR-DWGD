@@ -87,7 +87,8 @@ var.coords['mask'] = xr.DataArray(mask_array, dims=('latitude', 'longitude'))
 var_resample = var.resample(time=time_scale).sum('time').where(var.mask == 1).compute()
 # var_resample = var.resample(time=time_scale).mean('time').where(var.mask == 1).compute() # para média
 
-# Extrapolando, para que municípios que estão no limite do Brasil tenham dados.
+# Extrapolando os dados gradeados, para que municípios que estão
+# no limite do Brasil tenham dados.
 print("Extrapolando")
 var_resample.rio.write_nodata(np.nan, inplace=True)
 var_resample.rio.write_crs("epsg:4326", inplace=True)
@@ -129,7 +130,8 @@ municipios = pd.concat((municipios, municipios_data), axis=1)
 print("Gravando")
 municipios.to_file(name2save)
 
-# gráficos para exemplificar o código. Só vai rodar se escala de tempo for mensal
+# gráficos para exemplificar o código. Só vai rodar se escala de tempo for
+# mensal. Linha 51: time_scale = "M"
 if time_scale == "M":
     # plotando o mês de janeiro de 1961, extrapolado, e em nível municipal
     fig, axes = plt.subplots(1, 3, figsize=(15, 4))
