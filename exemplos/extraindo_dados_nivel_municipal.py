@@ -8,18 +8,19 @@ import geopandas as gpd
 from joblib import Parallel, delayed
 import rioxarray
 
-# Neste exemplo é apresentado a geração de arquivos formatos
-# "geojson", "shape" ou gpkg,  da variável precipitação, acumulada
-# em nível municipal para o Brasil. A escala de tempo pode ser
-# mensal ou anual, entre outras. O valor mensal de cada município é a
-# média das células da grade que estão dentro do limite deste.
-# Dependendo do computador, pode ser um pouco demorado,
-# no meu, roda em ~15 min (Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz; 12 processadores)
-# Shape dos municípios obtidos em em:
-# https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html?=&t=acesso-ao-produto
-# Geometria dos municípios foi simplificada em: https://mapshaper.org/
-# Arquivos shapes utilizados para este código, em: /exemplos/shape_file/
-
+"""
+Neste exemplo é apresentado a geração de arquivo no formato
+"geojson", "shape" ou gpkg,  da variável precipitação, acumulada
+em nível municipal para o Brasil. A escala de tempo pode ser
+mensal ou anual, entre outras. O valor mensal de cada município é a
+média das células da grade que estão dentro do seu limite.
+Dependendo do computador, pode ser um pouco demorado,
+No que utilizo, roda em ~15 min (Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz; 12 processadores)
+Shape dos municípios obtidos em em:
+https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html?=&t=acesso-ao-produto
+Geometria dos municípios foi simplificada em: https://mapshaper.org/
+Arquivos shapes utilizados para este código, em: /exemplos/shape_file/
+"""
 
 def coletando_dados(n, mask, lon, lat, municipios_data_pandas):
     # print(n)
@@ -118,20 +119,24 @@ municipios_data = pd.DataFrame(np.empty((len(municipios.CD_MUN),
 for n in range(len(municipios.CD_MUN)):
     municipios_data.iloc[n, :] = saida[n].astype("int")
 
-# concatenado dados shape com dados da grade
+# concatenado dados shape com dados da grade reamostrados
 municipios_data.set_index(municipios.index)
 municipios = pd.concat((municipios, municipios_data), axis=1)
 
 # gravando
-municipios.to_file(name2save)
+# municipios.to_file(name2save)
 
-# plotando o mês de janeiro de 1961, extrapolado, e em nível municipal
-fig, axes = plt.subplots(1, 3, figsize=(15, 4))
-time = '1961-12-31' # se time_scale = "Y" então: time = "1961-12-31"
-var_resample.sel(time=time).plot(ax=axes[0])
-axes[0].set_title(f"prec ({time[:7]})")
-var_resample_extrapolado.sel(time=time).plot(ax=axes[1])
-axes[1].set_title(f"prec_extrap ({time[:7]})")
-municipios.plot(ax=axes[2], column="1961-1", legend=True) # se time_scale = "Y" então: column="1961-12"
-axes[2].set_title("Prec municipal" + "1961-1")
-print("acabou")
+# gráficos para exemplificar o código. Só vai rodar se escala de tempo for mensal
+if time_scale == "M":
+    # plotando o mês de janeiro de 1961, extrapolado, e em nível municipal
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+    time = '1961-01-31' # se time_scale = "Y" então: time = "1961-12-31"
+    var_resample.sel(time=time).plot(ax=axes[0])
+    axes[0].set_title(f"prec ({time[:7]})")
+    var_resample_extrapolado.sel(time=time).plot(ax=axes[1])
+    axes[1].set_title(f"prec_extrap ({time[:7]})")
+    municipios.plot(ax=axes[2], column="1961-1", legend=True) # se time_scale = "Y" então: column="1961-12"
+    axes[2].set_title("Prec municipal" + "1961-1")
+    print("acabou")
+else:
+    print("Não plotou pois escala de tempo é diferente de mensal")

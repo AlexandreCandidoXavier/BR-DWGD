@@ -40,10 +40,11 @@ No exemplo do código [extraindo_dados_nivel_municipal.py](https://github.com/Al
 *geojson*.
 Para modificar:
 
-1. a variável que vai ser utilizada, ver **linha 47**;
-2. a escala de tempo, ver **linha 50**;
-3. o formato a ser exportado (*shapefile*, *geojson* ou *gpkg*), ver **linha 54** e;
-4. se a variável vai ser acumulada ou a média do período, ver **linha 84-87**.
+1. a variável que vai ser utilizada, modificar **linha 48**;
+2. a escala de tempo, modificar **linha 51**;
+3. o nome/formato do arquivo a ser exportado (*shapefile*, *geojson* ou *gpkg*), 
+   modificar **linha 55** e;
+4. se a variável vai ser acumulada ou a média do período, modificar **linha 87**.
 
 Resultado gráfico do código, apenas para exemplificar o procedimento: (*i*)
 a precipitação acumulada para jan/1961; (*ii*) a precipitação acumulada 
