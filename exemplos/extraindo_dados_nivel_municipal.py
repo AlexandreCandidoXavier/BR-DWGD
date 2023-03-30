@@ -60,7 +60,7 @@ var = xr.open_mfdataset(path_netcdf + nvar2get + '*.nc')[nvar2get]
 
 # pegando o arquivo shape dos municipios
 path = os.path.join(os.getcwd(), 'shape_file/BR_Municipios_2021.shp')
-municipios = gpd.read_file(path)
+municipios = gpd.read_file(path, encoding="utf-8")
 
 # centróides dos municípios para serem utilizados quando
 # o município é muito pequeno e não há célula da grade dentro.
