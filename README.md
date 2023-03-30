@@ -44,7 +44,8 @@ Para modificar:
 2. a escala de tempo, modificar **linha 51**;
 3. o nome/formato do arquivo a ser exportado (*shapefile*, *geojson* ou *gpkg*), 
    modificar **linha 55** e;
-4. se a variável vai ser acumulada ou a média do período, modificar **linha 87**.
+4. se a variável a ser exportada vai ser a acumulada ou a média 
+   do período, modificar **linha 87**.
 
 Resultado gráfico do código, apenas para exemplificar o procedimento: (*i*)
 a precipitação acumulada para jan/1961; (*ii*) a precipitação acumulada 

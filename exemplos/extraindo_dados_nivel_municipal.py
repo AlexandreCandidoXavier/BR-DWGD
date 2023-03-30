@@ -88,6 +88,7 @@ var_resample = var.resample(time=time_scale).sum('time').where(var.mask == 1).co
 # var_resample = var.resample(time=time_scale).mean('time').where(var.mask == 1).compute() # para média
 
 # Extrapolando, para que municípios que estão no limite do Brasil tenham dados.
+print("Extrapolando")
 var_resample.rio.write_nodata(np.nan, inplace=True)
 var_resample.rio.write_crs("epsg:4326", inplace=True)
 var_resample_extrapolado = var_resample.rio.interpolate_na()
@@ -105,6 +106,7 @@ lon = mask_munic.longitude.values
 # c = coletando_dados(n, mask_munic, lon, lat, municipios_data_pandas)
 # print(time.time() - start)
 
+print("Extraindo dados dos municípios")
 saida = Parallel(n_jobs=-1, verbose=4)(delayed(coletando_dados)(n, mask_munic, lon, lat, municipios_data_pandas)
                                        for n in range(len(municipios.CD_MUN)))  # municipios_data_pandas.shape[0]
 
@@ -124,7 +126,8 @@ municipios_data.set_index(municipios.index)
 municipios = pd.concat((municipios, municipios_data), axis=1)
 
 # gravando
-# municipios.to_file(name2save)
+print("Gravando")
+municipios.to_file(name2save)
 
 # gráficos para exemplificar o código. Só vai rodar se escala de tempo for mensal
 if time_scale == "M":
@@ -136,7 +139,8 @@ if time_scale == "M":
     var_resample_extrapolado.sel(time=time).plot(ax=axes[1])
     axes[1].set_title(f"prec_extrap ({time[:7]})")
     municipios.plot(ax=axes[2], column="1961-1", legend=True) # se time_scale = "Y" então: column="1961-12"
-    axes[2].set_title("Prec municipal" + "1961-1")
-    print("acabou")
+    axes[2].set_title("Prec municipal " + "1961-1")
 else:
     print("Não plotou pois escala de tempo é diferente de mensal")
+
+print("Rodou")
