@@ -94,7 +94,6 @@ var_resample.rio.write_nodata(np.nan, inplace=True)
 var_resample.rio.write_crs("epsg:4326", inplace=True)
 var_resample_extrapolado = var_resample.rio.interpolate_na()
 
-
 mask_munic = municipios_mask_poly.mask(var_resample_extrapolado.isel(time=0),
                                        lat_name='latitude',
                                        lon_name='longitude')

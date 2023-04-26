@@ -18,8 +18,9 @@ RAM livre.</span></p>
 
 Caso venha a utilizar os dados, solicitamos que seja devidamente citado como:
 
-Xavier, A. C., Scanlon, B. R., King, C. W., & Alves, A. I. (2022). New improved Brazilian daily weather gridded data
-(1961–2020). **International Journal of Climatology**, 1–15. https://doi.org/10.1002/joc.7731
+Xavier, A. C., Scanlon, B. R., King, C. W., & Alves, A. I. (2022). 
+New improved Brazilian daily weather gridded data (1961–2020). **International 
+Journal of Climatology**, 42(16), 8390– 8404. https://doi.org/10.1002/joc.7731
 
 ## Exportando dados para arquivos csv
 
