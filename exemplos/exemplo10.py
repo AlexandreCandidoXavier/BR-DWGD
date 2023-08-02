@@ -20,13 +20,13 @@ path = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 day_first, day_last = '1986-01-01', '2015-12-31'
 
 tmax = xr.open_mfdataset(path + 'Tmax*.nc', combine='by_coords').Tmax
-tmax_month = tmax.sel(time=slice(day_first, day_last)).groupby('time.month').mean()
+tmax_month = tmax.sel(time=slice(day_first, day_last)).groupby('time.month').mean().compute()
 
 tmin = xr.open_mfdataset(path + 'Tmin*.nc', combine='by_coords').Tmin
-tmin_month = tmin.sel(time=slice(day_first, day_last)).groupby('time.month').mean()
+tmin_month = tmin.sel(time=slice(day_first, day_last)).groupby('time.month').mean().compute()
 
 # calculado as medias mensais
-tas_BRDWGD = (tmax_month + tmin_month) / 2
+tas_BRDWGD = ((tmax_month + tmin_month) / 2).compute()
 tas_BRDWGD.coords['longitude'] = tas_BRDWGD.coords['longitude'] + 360
 
 # pesos

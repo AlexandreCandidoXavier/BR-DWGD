@@ -55,6 +55,11 @@ em nível municipal.
 
 ![](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/imagens/extracao_municipal.jpeg)
 
+## Jupyter lab
+
+Para exemplos em Jupyter lab, ver exemplo 
+[apresentacao_UFRN_UFSM.ipynb](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/apresentacao_UFRN_UFSM.ipynb)
+
 ## Resultados gráficos dos scripts
 
 [exemplo1.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo1.py) Plotando dados e controles

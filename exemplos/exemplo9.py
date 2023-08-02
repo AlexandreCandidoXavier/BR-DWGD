@@ -16,13 +16,13 @@ day_first, day_last = '1961-01-01', '2019-12-31'
 
 # pegando Tmax e Tmin, v2.1 e calculando as suas respectivas medias anuais
 tmax = xr.open_mfdataset(path + 'Tmax*.nc').Tmax
-tmax_yearly = tmax.sel(time=slice(day_first, day_last)).resample(time='Y').mean('time')
+tmax_yearly = tmax.sel(time=slice(day_first, day_last)).resample(time='Y').mean('time').compute()
 
 tmin = xr.open_mfdataset(path + 'Tmin*.nc').Tmin
-tmin_yearly = tmin.sel(time=slice(day_first, day_last)).resample(time='Y').mean('time')
+tmin_yearly = tmin.sel(time=slice(day_first, day_last)).resample(time='Y').mean('time').compute()
 
 # Temperatura anual
-temp_mean_yearly = (tmax_yearly+tmin_yearly) / 2
+temp_mean_yearly = ((tmax_yearly+tmin_yearly) / 2).compute()
 
 # calculos dos pesos das celulas de acordo com sua latitude
 weights = np.cos(np.deg2rad(temp_mean_yearly.latitude))
