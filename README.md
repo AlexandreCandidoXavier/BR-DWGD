@@ -60,7 +60,7 @@ em nível municipal.
 Para exemplos em Jupyter lab, ver exemplo 
 [apresentacao_UFRN_UFSM.ipynb](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/apresentacao_UFRN_UFSM.ipynb)
 
-## Resultados gráficos dos scripts
+## Resultados gráficos dos scripts do diretório [exemplos](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos)
 
 [exemplo1.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/exemplo1.py) Plotando dados e controles
 
