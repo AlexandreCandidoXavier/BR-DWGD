@@ -81,7 +81,7 @@ ax.set_ylim(-35, 7)
 g = sns.lmplot(x='year', y="t_mean", hue="region", data=df_all, legend=False)
 plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
        ncol=2, mode="expand", borderaxespad=0.)
-plt.xlim(1960,2021)
+plt.xlim(1960, 2021)
 plt.tight_layout()
 plt.show()
 

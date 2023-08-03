@@ -50,9 +50,9 @@ nvar2get = 'pr'
 # escala para amostragem "M" para mesal e "Y" para anual
 time_scale = "M"
 
-# Nome e tipo de arquivo para exportar os dados municipais
-# Para formato shapefile: 'preci_muni_mensal.shp' ou gpkg: 'preci_muni_mensal.gpkg'
-name2save = 'preci_muni_mensal.geojson'
+# Nome e tipo de arquivo para exportar os dados municipais, exemplo:
+# para formato shapefile: 'preci_muni_mensal.shp' ou gpkg: 'preci_muni_mensal.gpkg'
+name2save = 'preci_muni_mensal.shp'
 
 # caminho dos arquivos NetCDF da grade BR-DWGD
 path_netcdf = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
