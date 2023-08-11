@@ -3,14 +3,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 """
-Expotando normais climatologicas 1990/01/01-2019/12/31
+Exportando normais climatologicas período 1990/01/01-2019/12/31
 no formato NetCDF
 """
 
-# diretório arquivos NetCDF
+# diretório dos arquivos NetCDF
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 
-# intervalo da seria historica para os calculo das normais
+# intervalo da seria histórica para os calculo das normais
 date_start, date_end = '1991-01-01', '2019-12-31'
 
 # nomes das variaveis, sendo:
@@ -34,17 +34,17 @@ for var_name in var_names:
     mask_land = 1 * np.ones(var[var_name].shape[1:]) * ~np.isnan(var[var_name].isel(time=0))
     mask_array = (mask_ocean + mask_land).values
 
-    # incorporando mascara em ETo
+    # incorporando mascara em var
     var.coords['mask'] = xr.DataArray(mask_array, dims=('latitude', 'longitude'))
 
-    # reamostrando para mensal
-    # se variavel pr, ETo ou Rs, as médias serão acumuladas
+    # reamostrando para escala de tempo mensal
+    # se variavel pr, ETo ou Rs, as serão acumuladas
     if var_name in ['pr', 'ETo', "Rs"]:
         var_mean = var.loc[dict(time=slice(date_start, date_end))].resample(time='M').sum('time')
     else:
         var_mean = var.loc[dict(time=slice(date_start, date_end))].resample(time='M').mean('time')
 
-    # agrupando em meses
+    # calculando as médias mensais
     var_normal = var_mean.where(var.mask == 1).groupby('time.month').mean(dim='time')
 
     # plotando
@@ -52,4 +52,4 @@ for var_name in var_names:
     # plt.show()
 
     # gravando
-    var_normal.to_netcdf(var_name + "_normal" + ".nc")
+    var_normal.to_netcdf(var_name + "_normal.nc")
