@@ -23,7 +23,7 @@ New improved Brazilian daily weather gridded data (1961–2020). **International
 Journal of Climatology**, 42(16), 8390– 8404. https://doi.org/10.1002/joc.7731
 
 ## Instalação das bibliotecas
-Sugiro instalar as bibliotecas, sugiro utilizar o ambiente 
+Sugiro para instalar as bibliotecas, o ambiente 
 [miniconda](https://docs.conda.io/en/latest/miniconda.html).
 Depois de instalado o miniconda, no console, seguir a
 sequencia de comandos:
