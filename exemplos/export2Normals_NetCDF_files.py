@@ -38,7 +38,7 @@ for var_name in var_names:
     var.coords['mask'] = xr.DataArray(mask_array, dims=('latitude', 'longitude'))
 
     # reamostrando para escala de tempo mensal
-    # se variavel pr, ETo ou Rs, as serão acumuladas
+    # se variavel pr, ETo ou Rs, os valores mensais serão acumuladas
     if var_name in ['pr', 'ETo', "Rs"]:
         var_mean = var.loc[dict(time=slice(date_start, date_end))].resample(time='M').sum('time')
     else:

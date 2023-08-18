@@ -5,7 +5,6 @@ from cartopy.feature import BORDERS
 import cartopy.feature as cfeature
 import cartopy.crs as ccrs
 
-
 """ Calculo da diferenca sazonal entre a precipitacao e a 
 ET0 para o Brasil utilizando os dados gradeados 
 (periodo de 1980/01/01  a 2009/12/31)

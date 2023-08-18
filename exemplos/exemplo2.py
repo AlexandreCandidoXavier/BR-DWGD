@@ -12,11 +12,6 @@ Tmax_19810101_20001231_BR-DWGD_UFES_UTEXAS_v_X.XX.nc
 Tmax_19610101_19801231_BR-DWGD_UFES_UTEXAS_v_X.XX.nc
 """
 
-# versoes
-print(xr.__version__) # 2022.11.0
-print(np.__version__) # 1.24.2
-print(pd.__version__) # 1.5.3
-
 # set correct path of the variables
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 ds = xr.open_mfdataset(path_var + 'Tmax*.nc')
