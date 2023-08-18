@@ -22,6 +22,44 @@ Xavier, A. C., Scanlon, B. R., King, C. W., & Alves, A. I. (2022).
 New improved Brazilian daily weather gridded data (1961–2020). **International 
 Journal of Climatology**, 42(16), 8390– 8404. https://doi.org/10.1002/joc.7731
 
+## Instalação das bibliotecas
+Sugiro instalar as bibliotecas, sugiro utilizar o ambiente 
+[miniconda](https://docs.conda.io/en/latest/miniconda.html).
+Depois de instalado o miniconda, no console, seguir a
+sequencia de comandos:
+
+$ conda create --name br-dwgd
+
+$ conda activate br-dwgd
+
+$ conda install -c conda-forge xarray dask netCDF4 bottleneck
+
+$ pip install matplotlib
+
+$ pip install scipy
+
+$ pip install seaborn
+
+$ pip install regionmask
+
+$ pip install joblib
+
+$ pip install rioxarray
+
+$ pip install jupyterlab
+
+$ pip install hvplot
+
+$ pip install Cartopy
+
+$ pip install geoviews
+
+$ jupyter-lab
+
+Será aberto no seu navegador uma aba com o 
+[Jupyterlab](https://jupyter.org/). Lá, por exemplo, é só
+importar, por exemplo, o arquivo [apresentacao_UFRN_UFSM.ipynb](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/apresentacao_UFRN_UFSM.ipynb)
+
 ## Exportando dados para arquivos csv
 
 Para exportar em *csv*:
