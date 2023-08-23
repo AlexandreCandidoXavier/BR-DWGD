@@ -38,7 +38,7 @@ sequencia de comandos:
 
 `$ jupyter-lab` 
 
-Ou:
+Ou com o arquivo [requirements.txt](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/requirements.txt):
 
 `$ python3 -m venv br-dwgd`
 
