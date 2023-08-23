@@ -28,17 +28,25 @@ Sugiro para instalar as bibliotecas, o ambiente
 Depois de instalado o miniconda, no console, seguir a
 sequencia de comandos:
 
-`
-$ conda create --name br-dwgd
+`$ conda create --name br-dwgd`
 
-$ conda activate br-dwgd
+`$ conda activate br-dwgd`
 
-$ conda install -c conda-forge xarray dask netCDF4 bottleneck
+`$ conda install -c conda-forge xarray dask netCDF4 bottleneck`
 
-$ pip install matplotlib scipy seaborn regionmask joblib rioxarray jupyterlab hvplot Cartopy geoviews
+`$ pip install matplotlib scipy seaborn regionmask joblib rioxarray jupyterlab hvplot Cartopy geoviews`
 
-$ jupyter-lab
-`
+`$ jupyter-lab` 
+
+Ou:
+
+`$ python3 -m venv br-dwgd`
+
+`$ source br-dwgd/bin/activate`
+
+`$ pip install -r requirements.txt`
+
+`$ jupyter-lab`
 
 Será aberto no seu navegador uma aba com o 
 [Jupyterlab](https://jupyter.org/). Lá, por exemplo, é só
