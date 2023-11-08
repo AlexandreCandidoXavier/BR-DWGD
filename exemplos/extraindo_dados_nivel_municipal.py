@@ -22,8 +22,10 @@ Geometria dos municípios foi simplificada em: https://mapshaper.org/
 Arquivos shapes utilizados para este código, em: /exemplos/shape_file/
 """
 
-def coletando_dados(n, mask, lon, lat, municipios_data_pandas):
+
+def coletando_dados(n, mask, lon, lat):
     # print(n)
+    municipios_data_pandas = np.empty((len(var_resample_extrapolado.time)))
     sel_mask = mask.where(mask == n).values
     id_lon = lon[np.where(~np.all(np.isnan(sel_mask), axis=0))]
     if len(id_lon) >= 1:
@@ -43,11 +45,10 @@ def coletando_dados(n, mask, lon, lat, municipios_data_pandas):
 
     return municipios_data_pandas
 
-
 # escolhendo a variavel, neste caso precipitação ('Tmax', 'Tmin', 'Rs', 'RH', 'u2', 'pr')
 nvar2get = 'pr'
 
-# escala para amostragem "M" para mesal e "Y" para anual
+# escala para amostragem "M" para mensal e "Y" para anual
 time_scale = "M"
 
 # Nome e tipo de arquivo para exportar os dados municipais, exemplo:
@@ -94,9 +95,8 @@ var_resample.rio.write_nodata(np.nan, inplace=True)
 var_resample.rio.write_crs("epsg:4326", inplace=True)
 var_resample_extrapolado = var_resample.rio.interpolate_na()
 
-mask_munic = municipios_mask_poly.mask(var_resample_extrapolado.isel(time=0),
-                                       lat_name='latitude',
-                                       lon_name='longitude')
+mask_munic = municipios_mask_poly.mask(var_resample_extrapolado['longitude'],
+                                       var_resample_extrapolado['latitude'])
 
 municipios_data_pandas = np.empty((len(var_resample_extrapolado.time)))
 lat = mask_munic.latitude.values
@@ -107,15 +107,16 @@ lon = mask_munic.longitude.values
 # print(time.time() - start)
 
 print("Extraindo dados dos municípios")
-saida = Parallel(n_jobs=-1, verbose=4)(delayed(coletando_dados)(n, mask_munic, lon, lat, municipios_data_pandas)
-                                       for n in range(len(municipios.CD_MUN)))  # municipios_data_pandas.shape[0]
+saida = Parallel(n_jobs=-1, verbose=4)(delayed(coletando_dados)(n, mask_munic, lon, lat)
+                                       for n in range(len(municipios.CD_MUN)))
+# municipios_data_pandas.shape[0]
 
-year = var_resample_extrapolado.time.dt.year.values
-month = var_resample_extrapolado.time.dt.month.values
-year_month = [f'{year[n]}-{month[n]}' for n in range(len(year))]
+# year = var_resample_extrapolado.time.dt.year.values
+# month = var_resample_extrapolado.time.dt.month.values
+# year_month = [f'{year[n]}-{month[n]}' for n in range(len(year))]
 municipios_data = pd.DataFrame(np.empty((len(municipios.CD_MUN),
                                          len(var_resample_extrapolado.time)), dtype="int"),
-                               columns=year_month,
+                               columns=var_resample_extrapolado.time.dt.strftime('%Y-%m-%d'),
                                index=municipios.index)
 
 for n in range(len(municipios.CD_MUN)):
@@ -128,6 +129,7 @@ municipios = pd.concat((municipios, municipios_data), axis=1)
 # gravando
 print("Gravando")
 municipios.to_file(name2save)
+
 
 # gráficos para exemplificar o código. Só vai rodar se escala de tempo for
 # mensal. Linha 51: time_scale = "M"
