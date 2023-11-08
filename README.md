@@ -65,7 +65,7 @@ Para exportar em *csv*:
    
 ## Para exportar dados, em nível municipal, nos formatos *geojson*, *shp* ou *gpkg*
 
-IMPORTANTE: este código foi corrigido em 08/11/2023. O anterior estava com problema.
+**IMPORTANTE: este código foi corrigido em 08/11/2023. O anterior estava com problema.**
 
 No exemplo do código [extraindo_dados_nivel_municipal.py](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/extraindo_dados_nivel_municipal.py),
 é extraida a precipitação acumulada mensal de todos os municípios do Brasil 
