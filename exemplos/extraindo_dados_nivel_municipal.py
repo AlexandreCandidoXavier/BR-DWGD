@@ -7,15 +7,16 @@ import os
 import geopandas as gpd
 from joblib import Parallel, delayed
 import rioxarray
+np.seterr(all="ignore")
 
 """
+IMPORTANTE! O código anteiror estava com problemas, não calculado corretamente
+a variável em níbel municipal. Foi corrigido foi realizada em 08/nov/2023.
 Neste exemplo é apresentado a geração de arquivo no formato
 "geojson", "shape" ou gpkg,  da variável precipitação, acumulada
 em nível municipal para o Brasil. A escala de tempo pode ser
 mensal ou anual, entre outras. O valor mensal de cada município é a
 média das células da grade que estão dentro do seu limite.
-Dependendo do computador, pode ser um pouco demorado,
-No que utilizo, roda em ~15 min (Intel(R) Xeon(R) CPU E5-1650 v3 @ 3.50GHz; 12 processadores)
 Shape dos municípios obtidos em em:
 https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais/15774-malhas.html?=&t=acesso-ao-produto
 Geometria dos municípios foi simplificada em: https://mapshaper.org/
@@ -25,7 +26,6 @@ Arquivos shapes utilizados para este código, em: /exemplos/shape_file/
 
 def coletando_dados(n, mask, lon, lat):
     # print(n)
-    municipios_data_pandas = np.empty((len(var_resample_extrapolado.time)))
     sel_mask = mask.where(mask == n).values
     id_lon = lon[np.where(~np.all(np.isnan(sel_mask), axis=0))]
     if len(id_lon) >= 1:
@@ -33,8 +33,7 @@ def coletando_dados(n, mask, lon, lat):
         out_sel = var_resample_extrapolado.sel(latitude=slice(id_lat[0], id_lat[-1]),
                                                longitude=slice(id_lon[0], id_lon[-1])).compute().where(mask == n)
 
-        for k in range(out_sel.shape[0]):
-            municipios_data_pandas[k] = np.nanmean(out_sel[k].values)
+        municipios_data_pandas = np.nanmean(out_sel.values, axis=(1, 2))
 
     else:
         lon_municipios, lat_municipios = municipios_centroid_x[n], municipios_centroid_y[n]
@@ -103,17 +102,13 @@ lat = mask_munic.latitude.values
 lon = mask_munic.longitude.values
 
 # start = time.time()
-# c = coletando_dados(n, mask_munic, lon, lat, municipios_data_pandas)
+# c = coletando_dados(0, mask_munic, lon, lat)
 # print(time.time() - start)
 
 print("Extraindo dados dos municípios")
 saida = Parallel(n_jobs=-1, verbose=4)(delayed(coletando_dados)(n, mask_munic, lon, lat)
                                        for n in range(len(municipios.CD_MUN)))
-# municipios_data_pandas.shape[0]
 
-# year = var_resample_extrapolado.time.dt.year.values
-# month = var_resample_extrapolado.time.dt.month.values
-# year_month = [f'{year[n]}-{month[n]}' for n in range(len(year))]
 municipios_data = pd.DataFrame(np.empty((len(municipios.CD_MUN),
                                          len(var_resample_extrapolado.time)), dtype="int"),
                                columns=var_resample_extrapolado.time.dt.strftime('%Y-%m-%d'),
