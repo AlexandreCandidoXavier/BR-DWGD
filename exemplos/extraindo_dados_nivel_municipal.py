@@ -10,8 +10,8 @@ import rioxarray
 np.seterr(all="ignore")
 
 """
-IMPORTANTE! O código anteiror estava com problemas, não calculando corretamente
-a variável em nível municipal. Corrigigo em 08/nov/2023.
+IMPORTANTE! O código anterior estava com problemas, não calculando corretamente
+a variável em nível municipal. Corrigido em 08/nov/2023.
 Neste exemplo é apresentado a geração de arquivo no formato
 "geojson", "shape" ou gpkg,  da variável precipitação, acumulada
 em nível municipal para o Brasil. A escala de tempo pode ser
