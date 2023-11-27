@@ -14,6 +14,11 @@ RAM livre.</span></p>
 ## Download da grade (BR-DWGD)
 [**Aqui**](https://drive.google.com/drive/folders/11-qnvwojirAtaQxSE03N0_SUrbcsz44N)
 
+## Utilizando o Google Earth Engine 
+Não há necessidade de baixar os dados. Ver [
+awesome-gee-community-catalog ](https://gee-community-catalog.org/projects/br_dwgd/). 
+E exemplos em Jupyter (em construção) na pasta notebooks.
+
 ## Citação dos dados
 
 Caso venha a utilizar os dados, solicitamos que seja devidamente citado como:
