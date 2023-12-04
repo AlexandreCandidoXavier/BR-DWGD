@@ -4,7 +4,7 @@ import pandas as pd
 import time
 
 """
-Exportando dados DIÁRIOS de todas as variaveis para uma regiao, onde se conhece os 
+Exportando dados MENSAIS de todas as variaveis para uma regiao, onde se conhece os 
 limites da região e período de tempo dos dados à ser exportado.
 
 Para as variáveis pr e ETo, os valores são os acumulados,
