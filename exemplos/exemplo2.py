@@ -17,10 +17,10 @@ path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 ds = xr.open_mfdataset(path_var + 'Tmax*.nc')
 
 # pegando a variavel Tmax entre '1961-01-01', '1989-12-31'
-Tmax_data = ds.Tmax.sel(time=slice('1961-01-01','1989-12-31'))
+Tmax_data = ds.Tmax.sel(time=slice('1961-01-01', '1989-12-31'))
 
 # pegando os dados para o posicao de Umuarama/Parana
-Tmax_data_temporal = Tmax_data.sel(latitude=-23.76,longitude=-53.30,
+Tmax_data_temporal = Tmax_data.sel(latitude=-23.76, longitude=-53.30,
                                    method='nearest')
 # plotando dados diarios
 _, (ax1, ax2) = plt.subplots(1, 2)
