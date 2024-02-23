@@ -55,7 +55,7 @@ Ou com o arquivo [requirements.txt](https://github.com/AlexandreCandidoXavier/BR
 
 Será aberto no seu navegador uma aba com o 
 [Jupyterlab](https://jupyter.org/). Lá, por exemplo, é só
-importar, por exemplo, o arquivo [apresentacao_UFRN_UFSM.ipynb](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/exemplos/apresentacao_UFRN_UFSM.ipynb)
+importar, por exemplo, o arquivo [apresentacao_UFRN_UFSM.ipynb](https://github.com/AlexandreCandidoXavier/BR-DWGD/blob/main/notebooks/apresentacao_UFRN_UFSM.ipynb)
 
 ## Exportando dados para arquivos csv
 
