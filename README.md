@@ -39,7 +39,7 @@ sequencia de comandos:
 
 `$ conda install -c conda-forge xarray dask netCDF4 bottleneck`
 
-`$ pip install matplotlib scipy seaborn regionmask joblib rioxarray jupyterlab hvplot Cartopy geoviews`
+`$ pip install matplotlib scipy seaborn regionmask joblib rioxarray jupyterlab hvplot cartopy geoviews geopandas`
 
 `$ jupyter-lab` 
 
