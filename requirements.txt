@@ -10,6 +10,9 @@ joblib
 rioxarray
 jupyterlab
 hvplot
-Cartopy
+cartopy
 geoviews
-
+geopandas
+geemap
+plotly
+pycrs
