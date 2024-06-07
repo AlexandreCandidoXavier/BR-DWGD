@@ -135,7 +135,7 @@ if time_scale == "M":
     axes[0].set_title(f"prec ({time[:7]})")
     var_resample_extrapolado.sel(time=time).plot(ax=axes[1])
     axes[1].set_title(f"prec_extrap ({time[:7]})")
-    municipios.plot(ax=axes[2], column="1961-01-31", legend=True) # se time_scale = "Y" então: column="1961-12"
+    municipios.plot(ax=axes[2], column=time, legend=True) # se time_scale = "Y" então: column="1961-12"
     axes[2].set_title("Prec municipal " + "1961-1")
 else:
     print("Não plotou pois escala de tempo é diferente de mensal")
