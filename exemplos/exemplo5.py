@@ -9,7 +9,7 @@ Arquivos:
 """
 # pegando variavel
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
-var = xr.open_mfdataset(path_var + 'Tmax*.nc')['Tmax'].sel(time=slice('1990-01-01','2019-12-31'))
+var = xr.open_mfdataset(path_var + 'Tmax*.nc', chunks={'time': 3000})['Tmax'].sel(time=slice('1990-01-01', '2019-12-31'))
 
 # Nome e posicao dos pontos
 posicoes = {'INPE-SP': [-23.2, -45.9],

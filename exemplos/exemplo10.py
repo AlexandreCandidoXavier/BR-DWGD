@@ -19,10 +19,10 @@ path = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 # definição das datas para calculo das normais
 day_first, day_last = '1986-01-01', '2015-12-31'
 
-tmax = xr.open_mfdataset(path + 'Tmax*.nc', combine='by_coords').Tmax
+tmax = xr.open_mfdataset(path + 'Tmax*.nc', chunks={'time': 3000}).Tmax
 tmax_month = tmax.sel(time=slice(day_first, day_last)).groupby('time.month').mean().compute()
 
-tmin = xr.open_mfdataset(path + 'Tmin*.nc', combine='by_coords').Tmin
+tmin = xr.open_mfdataset(path + 'Tmin*.nc', chunks={'time': 3000}).Tmin
 tmin_month = tmin.sel(time=slice(day_first, day_last)).groupby('time.month').mean().compute()
 
 # calculado as medias mensais

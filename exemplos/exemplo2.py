@@ -14,7 +14,7 @@ Tmax_19610101_19801231_BR-DWGD_UFES_UTEXAS_v_X.XX.nc
 
 # set correct path of the variables
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
-ds = xr.open_mfdataset(path_var + 'Tmax*.nc')
+ds = xr.open_mfdataset(path_var + 'Tmax*.nc', chunks={'time': 3000})
 
 # pegando a variavel Tmax entre '1961-01-01', '1989-12-31'
 Tmax_data = ds.Tmax.sel(time=slice('1961-01-01', '1989-12-31'))

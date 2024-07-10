@@ -18,27 +18,34 @@ date_start, date_end = '1961-01-01', '2020-07-31'
 lat_min, lat_max = -12.64, -12.25
 lon_min, lon_max = -38.96, -38.59
 
+lat_min, lat_max = -21.3, -17.8
+lon_min, lon_max = -41.9, -39.65
+
+
 # variables names
 var_names = ['Rs', 'u2', 'Tmax', 'Tmin', 'RH', 'pr', 'ETo']
 
 # latitude and longitude of GRID
-var = xr.open_mfdataset(path_var + 'pr*.nc')
+var = xr.open_mfdataset(path_var + 'pr*.nc', chunks={'time': 3000})
 latitude = var.latitude.values
 longitude = var.longitude.values
 
 lat = latitude[np.array(np.nonzero((latitude >= lat_min) &
-                                  (latitude <= lat_max))).flatten()]
+                                   (latitude <= lat_max))).flatten()]
 lon = longitude[np.array(np.nonzero((longitude >= lon_min) &
-                                  (longitude <= lon_max))).flatten()]
+                                    (longitude <= lon_max))).flatten()]
 
 lon, lat = np.meshgrid(lon, lat)
 lon, lat = lon.flatten(), lat.flatten()
 
+
 # function to read the netcdf files
 def rawData(var2get_xr, var_name2get):
-    return var2get_xr[var_name2get].loc[dict(time=slice(date_start, date_end))].sel(longitude=xr.DataArray(lon, dims='z'),
-                                          latitude=xr.DataArray(lat, dims='z'),
-                                          method='nearest').values
+    return var2get_xr[var_name2get].loc[dict(time=slice(date_start, date_end))].sel(
+        longitude=xr.DataArray(lon, dims='z'),
+        latitude=xr.DataArray(lat, dims='z'),
+        method='nearest').values
+
 
 # getting data from NetCDF files
 for n, var_name2get in enumerate(var_names):

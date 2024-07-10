@@ -15,10 +15,10 @@ path = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 day_first, day_last = '1961-01-01', '2019-12-31'
 
 # pegando Tmax e Tmin, v2.1 e calculando as suas respectivas medias anuais
-tmax = xr.open_mfdataset(path + 'Tmax*.nc').Tmax
+tmax = xr.open_mfdataset(path + 'Tmax*.nc', chunks={'time': 3000}).Tmax
 tmax_yearly = tmax.sel(time=slice(day_first, day_last)).resample(time='Y').mean('time').compute()
 
-tmin = xr.open_mfdataset(path + 'Tmin*.nc').Tmin
+tmin = xr.open_mfdataset(path + 'Tmin*.nc', chunks={'time': 3000}).Tmin
 tmin_yearly = tmin.sel(time=slice(day_first, day_last)).resample(time='Y').mean('time').compute()
 
 # Temperatura anual

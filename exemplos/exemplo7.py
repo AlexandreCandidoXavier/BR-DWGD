@@ -12,8 +12,8 @@ ET0 para o Brasil utilizando os dados gradeados
 
 # pegando variavel
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
-ETo = xr.open_mfdataset(path_var + 'ETo*.nc')
-prec = xr.open_mfdataset(path_var + 'pr*.nc')
+ETo = xr.open_mfdataset(path_var + 'ETo*.nc', chunks={'time': 3000})
+prec = xr.open_mfdataset(path_var + 'pr*.nc', chunks={'time': 3000})
 
 # criando mascara para o continente e mar
 mask_ocean = 2 * np.ones(prec['pr'].shape[1:]) * np.isnan(prec['pr'].isel(time=0))

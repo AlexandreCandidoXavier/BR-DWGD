@@ -49,10 +49,10 @@ for n, var_name2get in enumerate(var_names):
     print("lendo: " + var_name2get)
     # var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').chunk(chunks={"time": 400})
     if var_name2get in ["pr", "ETo"]:
-        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="M").sum("time")
+        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 3000}).resample(time="M").sum("time")
         # var2get_xr[var_name2get].sel(latitude=lat[0], longitude=lon[0], method='nearest').plot()
     else:
-        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="M").mean("time")
+        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 3000}).resample(time="M").mean("time")
 
     if n == 0:
         var_ar = rawData(var2get_xr, var_name2get)
