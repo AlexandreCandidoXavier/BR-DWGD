@@ -11,7 +11,7 @@ celula mais proxima a estas cidades).
 """
 
 # lendo arquivo
-path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/Controls/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/Controls/'
 ds = xr.open_mfdataset(path_var + 'pr_Control*.nc', chunks={'time': 3000})
 dist_nearest = ds['dist_nearest']
 count = ds['count']

@@ -11,7 +11,7 @@ para as demais, é média dos mês
 """
 
 # set correct path of the netcdf files
-path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
 
 # Posicoes: Colocar em ordem, separando por virgula. Neste exemplo temos dois pontos em que as coordenadas
 # (lat, lon) sao (-20.6,-44.6) e  (-21.0, -44.1), respectivamente para o primeiro e segundo ponto.

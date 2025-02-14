@@ -8,8 +8,9 @@ algumas localidades. Normais 01/01/1990 a 31/12/2019
 Arquivos:
 """
 # pegando variavel
-path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
-var = xr.open_mfdataset(path_var + 'Tmax*.nc', chunks={'time': 3000})['Tmax'].sel(time=slice('1990-01-01', '2019-12-31'))
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
+var = (xr.open_mfdataset(path_var + 'Tmax*.nc', chunks={'time': 3000})['Tmax']
+       .sel(time=slice('1990-01-01', '2019-12-31')))
 
 # Nome e posicao dos pontos
 posicoes = {'INPE-SP': [-23.2, -45.9],

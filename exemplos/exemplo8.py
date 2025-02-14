@@ -1,13 +1,13 @@
 import xarray as xr
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
-from cartopy.feature import NaturalEarthFeature, BORDERS
+from cartopy.feature import BORDERS
 
 """ Abrindo e plotando a normal da temperatura media do mês janeiro, período 1961/01/01-1989/12/31 
 """
 
 # pegando Tmax e Tmin, v2.1 e calculando as msuas respectivas medias mensais
-path = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+path = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
 
 # definição das datas para calculo das normais
 day_first, day_last = '1961-01-01', '1989-12-31'
@@ -20,7 +20,7 @@ tmin_month = tmin.sel(time=slice(day_first, day_last)).groupby('time.month').mea
 
 # plotando normal, mes de Janeiro
 month = 1 # 1=janeiro, 2=fevereiro, .... 12=dezembro
-((tmax_month.sel(month=month)+tmin_month.sel(month=month)) / 2).plot(cmap=plt.cm.jet)
+((tmax_month.sel(month=month) + tmin_month.sel(month=month)) / 2).plot(cmap=plt.cm.jet)
 
 # plotando as medias para todos os meses
 t_media = ((tmax_month + tmin_month) / 2)

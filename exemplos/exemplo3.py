@@ -8,7 +8,7 @@ RH_19610101_19801231_BR-DWGD_UFES_UTEXAS_v_X.XX.nc
 """
 
 # pegando variavel
-path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
 ds = xr.open_mfdataset(path_var + 'RH*.nc', chunks={'time': 3000})
 
 # pegando a variavel RH entre '1990-01-01' a '2019-12-31'

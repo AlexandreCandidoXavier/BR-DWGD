@@ -11,7 +11,7 @@ ET0 para o Brasil utilizando os dados gradeados
 """
 
 # pegando variavel
-path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
 ETo = xr.open_mfdataset(path_var + 'ETo*.nc', chunks={'time': 3000})
 prec = xr.open_mfdataset(path_var + 'pr*.nc', chunks={'time': 3000})
 
@@ -30,8 +30,8 @@ states = cfeature.STATES.with_scale('50m')
 # reamostrando para a media mensal diaria
 date_start, date_end = '1980-01-01', '2009-12-31'
 
-EToSlice = ETo['ETo'].loc[dict(time=slice(date_start, date_end))].resample(time='M').mean('time')
-precSlice = prec['pr'].loc[dict(time=slice(date_start, date_end))].resample(time='M').mean('time')
+EToSlice = ETo['ETo'].loc[dict(time=slice(date_start, date_end))].resample(time='ME').mean('time')
+precSlice = prec['pr'].loc[dict(time=slice(date_start, date_end))].resample(time='ME').mean('time')
 
 # agrupando nas estacoes ('DJF', 'MAM', 'JJA', 'SON')
 EToSeason = EToSlice.groupby('time.season').mean(dim='time')

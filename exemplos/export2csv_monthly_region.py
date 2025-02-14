@@ -12,7 +12,7 @@ para as demais, é média dos mês.
 """
 
 # set correct path of the netcdf files
-path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
 
 # periodo para ser exportado
 date_start, date_end = '1961-01-01', '2024-03-20'
@@ -49,10 +49,10 @@ for n, var_name2get in enumerate(var_names):
     print("lendo: " + var_name2get)
     # var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').chunk(chunks={"time": 400})
     if var_name2get in ["pr", "ETo"]:
-        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 3000}).resample(time="M").sum("time")
+        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 3000}).resample(time="ME").sum("time")
         # var2get_xr[var_name2get].sel(latitude=lat[0], longitude=lon[0], method='nearest').plot()
     else:
-        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 3000}).resample(time="M").mean("time")
+        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 3000}).resample(time="ME").mean("time")
 
     if n == 0:
         var_ar = rawData(var2get_xr, var_name2get)

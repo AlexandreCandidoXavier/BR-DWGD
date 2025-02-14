@@ -5,7 +5,7 @@ import time
 import matplotlib.pyplot as plt
 import rioxarray
 
-path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
 
 lat_min, lat_max = -22, -13.8
 lon_min, lon_max = -42.1, -38.5

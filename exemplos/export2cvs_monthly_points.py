@@ -13,7 +13,7 @@ para as demais, é média dos mês
 date_start, date_end = '1961-01-01', '2024-03-20'
 
 # set correct path of the netcdf files
-path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
 
 # Posicoes: Colocar em ordem, separando por virgula. Neste exemplo temos dois pontos em que as coordenadas
 # (lat, lon) sao (-20.6,-44.6) e  (-21.0, -44.1), respectivamente para o primeiro e segundo ponto.
@@ -37,10 +37,10 @@ for n, var_name2get in enumerate(var_names):
     print("getting " + var_name2get)
     if var_name2get in ["pr", "ETo"]:
         var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 3000}) \
-                       .resample(time="M").sum("time")
+                       .resample(time="ME").sum("time")
         # var2get_xr[var_name2get].sel(latitude=lat[0], longitude=lon[0], method='nearest').plot()
     else:
-        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="M").mean("time")
+        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="ME").mean("time")
 
     if n == 0:
         var_ar, time = rawData(var2get_xr, var_name2get)
