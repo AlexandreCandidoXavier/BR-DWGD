@@ -10,7 +10,7 @@ Para as variáveis pr e ETo, os valores são os acumulados,
 para as demais, é média dos mês 
 """
 # periodo para ser exportado
-date_start, date_end = '1961-01-01', '2020-07-31'
+date_start, date_end = '1961-01-01', '2024-03-20'
 
 # set correct path of the netcdf files
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
@@ -26,25 +26,27 @@ var_names = ['Rs', 'u2','Tmax', 'Tmin', 'RH', 'pr', 'ETo']
 
 # function to read the netcdf files
 def rawData(var2get_xr, var_name2get):
-    return var2get_xr[var_name2get].loc[dict(time=slice(date_start, date_end))].sel(longitude=xr.DataArray(lon, dims='z'),
-                                          latitude=xr.DataArray(lat, dims='z'),
-                                          method='nearest').values
+    data_get = var2get_xr[var_name2get].loc[dict(time=slice(date_start, date_end))].sel(
+        longitude=xr.DataArray(lon, dims='z'),
+        latitude=xr.DataArray(lat, dims='z'),
+        method='nearest')
+    return data_get.values, data_get.time.values
 
 # getting data from NetCDF files
 for n, var_name2get in enumerate(var_names):
     print("getting " + var_name2get)
     if var_name2get in ["pr", "ETo"]:
-        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="M").sum("time")
+        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 3000}) \
+                       .resample(time="M").sum("time")
         # var2get_xr[var_name2get].sel(latitude=lat[0], longitude=lon[0], method='nearest').plot()
     else:
         var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="M").mean("time")
 
     if n == 0:
-        var_ar = rawData(var2get_xr, var_name2get)
+        var_ar, time = rawData(var2get_xr, var_name2get)
         n_lines = var_ar.shape[0]
-        time = var2get_xr.time.values
     else:
-        var_ar = np.c_[var_ar, rawData(var2get_xr, var_name2get)]
+        var_ar = np.c_[var_ar, rawData(var2get_xr, var_name2get)[0]]
 
 # saving
 for n in range(len(lat)):

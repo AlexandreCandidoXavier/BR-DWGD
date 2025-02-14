@@ -15,7 +15,7 @@ para as demais, é média dos mês.
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 
 # periodo para ser exportado
-date_start, date_end = '1961-01-01', '2020-07-31'
+date_start, date_end = '1961-01-01', '2024-03-20'
 
 # limits of the area
 lat_min, lat_max = -17.4, -15.7

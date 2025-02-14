@@ -7,7 +7,7 @@ import time
 Exportando dados DIÁRIOS de todas as variaveis para determinadas posicoes/pontos geograficas. 
 """
 # periodo para ser exportado
-date_start, date_end = '1961-01-01', '2020-07-31'
+date_start, date_end = '1961-01-01', '2024-03-20'
 
 # set correct path of the netcdf files
 path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
