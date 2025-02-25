@@ -55,7 +55,6 @@ time_scale = "M"
 name2save = 'preci_muni_mensal.shp'
 
 # caminho dos arquivos NetCDF da grade BR-DWGD
-path_netcdf = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
 path_netcdf = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
 
 var = xr.open_mfdataset(path_netcdf + nvar2get + '*.nc')[nvar2get]

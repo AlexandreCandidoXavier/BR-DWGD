@@ -12,7 +12,7 @@ no formato NetCDF
 """
 
 # diretório dos arquivos NetCDF
-path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
 
 # intervalo da seria histórica para os calculo das normais
 date_start, date_end = '2017-01-01', '2019-12-31'
