@@ -12,7 +12,7 @@ import seaborn as sns
 path = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
 
 # definição da dadas para calculos
-day_first, day_last = '1961-01-01', '2019-12-31'
+day_first, day_last = '1961-01-01', '2023-12-31'
 
 # pegando Tmax e Tmin, v2.1 e calculando as suas respectivas medias anuais
 tmax = xr.open_mfdataset(path + 'Tmax*.nc', chunks={'time': 3000}).Tmax
@@ -81,7 +81,7 @@ ax.set_ylim(-35, 7)
 g = sns.lmplot(x='year', y="t_mean", hue="region", data=df_all, legend=False)
 plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
        ncol=2, mode="expand", borderaxespad=0.)
-plt.xlim(1960, 2021)
+plt.xlim(1960, 2025)
 plt.tight_layout()
 plt.show()
 
