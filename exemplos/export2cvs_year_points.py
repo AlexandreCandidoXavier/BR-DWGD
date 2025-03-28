@@ -24,25 +24,24 @@ var_names = ['Rs', 'u2','Tmax', 'Tmin', 'RH', 'pr', 'ETo']
 
 # function to read the netcdf files
 def rawData(var2get_xr, var_name2get):
-    return var2get_xr[var_name2get].sel(longitude=xr.DataArray(lon, dims='z'),
+    data = var2get_xr[var_name2get].sel(longitude=xr.DataArray(lon, dims='z'),
                                           latitude=xr.DataArray(lat, dims='z'),
-                                          method='nearest').values
+                                          method='nearest')
+    return data.values, data.time.values
 
 # getting data from NetCDF files
 for n, var_name2get in enumerate(var_names):
     print("getting " + var_name2get)
     if var_name2get in ["pr", "ETo"]:
-        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="Y").sum("time")
+        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="YE").sum("time")
         # var2get_xr[var_name2get].sel(latitude=lat[0], longitude=lon[0], method='nearest').plot()
     else:
-        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="Y").mean("time")
+        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="YE").mean("time")
 
     if n == 0:
-        var_ar = rawData(var2get_xr, var_name2get)
-        n_lines = var_ar.shape[0]
-        time = var2get_xr.time.values
+        var_ar, time = rawData(var2get_xr, var_name2get)
     else:
-        var_ar = np.c_[var_ar, rawData(var2get_xr, var_name2get)]
+        var_ar = np.c_[var_ar, rawData(var2get_xr, var_name2get)[0]]
 
 # saving
 for n in range(len(lat)):

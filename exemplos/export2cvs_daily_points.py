@@ -10,7 +10,7 @@ Exportando dados DIÁRIOS de todas as variaveis para determinadas posicoes/ponto
 date_start, date_end = '1961-01-01', '2024-03-20'
 
 # set correct path of the netcdf files
-path_var = '/home/alexandre/Dropbox/grade_2020/data/netcdf_files/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
 
 # Posicoes: Colocar em ordem, separando por virgula. Neste exemplo temos dois pontos em que as coordenadas
 # (lat, lon) sao (-20.6,-44.6) e  (-21.0, -44.1), respectivamente para o primeiro e segundo ponto.
@@ -23,20 +23,19 @@ var_names = ['Rs', 'u2','Tmax', 'Tmin', 'RH', 'pr', 'ETo']
 
 # function to read the netcdf files
 def rawData(var2get_xr, var_name2get):
-    return var2get_xr[var_name2get].loc[dict(time=slice(date_start, date_end))].sel(longitude=xr.DataArray(lon, dims='z'),
-                                          latitude=xr.DataArray(lat, dims='z'),
-                                          method='nearest').values
+    data = var2get_xr[var_name2get].loc[dict(time=slice(date_start, date_end))].sel(longitude=xr.DataArray(lon, dims='z'),
+                                                                             latitude=xr.DataArray(lat, dims='z'),
+                                                                             method='nearest')
+    return data.values, data.time.values
 
 # getting data from NetCDF files
 for n, var_name2get in enumerate(var_names):
     print("getting " + var_name2get)
     var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 3000})
     if n == 0:
-        var_ar = rawData(var2get_xr, var_name2get)
-        n_lines = var_ar.shape[0]
-        time = var2get_xr.time.values
+        var_ar, time = rawData(var2get_xr, var_name2get)
     else:
-        var_ar = np.c_[var_ar, rawData(var2get_xr, var_name2get)]
+        var_ar = np.c_[var_ar, rawData(var2get_xr, var_name2get)[0]]
 
 # saving
 for n in range(len(lat)):
