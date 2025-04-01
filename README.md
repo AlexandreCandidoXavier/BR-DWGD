@@ -14,10 +14,11 @@ RAM livre.</span></p>
 ## Download da grade (BR-DWGD)
 [**Aqui**](https://drive.google.com/drive/folders/11-qnvwojirAtaQxSE03N0_SUrbcsz44N)
 
-## Utilizando o Google Earth Engine 
-Não há necessidade de baixar os dados. Ver [
-awesome-gee-community-catalog ](https://gee-community-catalog.org/projects/br_dwgd/). 
-E exemplos em Jupyter (em construção) na pasta notebooks.
+## No Google Earth Engine (atualizado em março de 2025)
+Não há necessidade de baixar os dados. Grade atualizada em março de 2025 (grade no 
+GEE [aqui](https://code.earthengine.google.com/?asset=projects/ee-alexandrexavier/assets/BR-DWGD)). 
+Simples exemplo em *JavaScript* [aqui](https://code.earthengine.google.com/b073892a62887b96c569c327fd57d140) e em Python
+[aqui](https://github.com/AlexandreCandidoXavier/BR-DWGD/tree/main/notebooks)
 
 ## Citação dos dados
 
