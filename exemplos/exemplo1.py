@@ -15,7 +15,7 @@ path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_ne
 path_control = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/Controls/'
 
 name_var = 'Rs'
-data = xr.open_mfdataset(path_var + name_var + '*.nc')
+data = xr.open_mfdataset(path_var + name_var + '*.nc', chunks={})
 data_control = xr.open_mfdataset(path_control + name_var + '*.nc')
 Rs = data[name_var]
 Rs_count = data_control['count']
