@@ -8,8 +8,8 @@ algumas localidades. Normais 01/01/1990 a 31/12/2019
 Arquivos:
 """
 # pegando variavel
-path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
-var = (xr.open_mfdataset(path_var + 'Tmax*.nc', chunks={'time': 3000})['Tmax']
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_beta/data/netcdf_new_dtype/'
+var = (xr.open_mfdataset(path_var + 'Tmax*.nc', chunks={'time': 300})['Tmax']
        .sel(time=slice('1990-01-01', '2019-12-31')))
 
 # Nome e posicao dos pontos

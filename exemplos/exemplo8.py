@@ -7,15 +7,15 @@ from cartopy.feature import BORDERS
 """
 
 # pegando Tmax e Tmin, v2.1 e calculando as msuas respectivas medias mensais
-path = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
+path = '/home/alexandre/Dropbox/grade_2020/grade_beta/data/netcdf_new_dtype/'
 
 # definição das datas para calculo das normais
 day_first, day_last = '1961-01-01', '1989-12-31'
 
-tmax = xr.open_mfdataset(path + 'Tmax*.nc', chunks={'time': 3000}).Tmax
+tmax = xr.open_mfdataset(path + 'Tmax*.nc', chunks={'time': 300}).Tmax
 tmax_month = tmax.sel(time=slice(day_first, day_last)).groupby('time.month').mean('time')
 
-tmin = xr.open_mfdataset(path + 'Tmin*.nc', chunks={'time': 3000}).Tmin
+tmin = xr.open_mfdataset(path + 'Tmin*.nc', chunks={'time': 300}).Tmin
 tmin_month = tmin.sel(time=slice(day_first, day_last)).groupby('time.month').mean('time')
 
 # plotando normal, mes de Janeiro

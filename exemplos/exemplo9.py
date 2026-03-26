@@ -9,16 +9,16 @@ import seaborn as sns
 """
 
 # colocar em "path" o caminho correto dos arquivos NetCDF
-path = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
+path = '/home/alexandre/Dropbox/grade_2020/grade_beta/data/netcdf_new_dtype/'
 
 # definição da dadas para calculos
-day_first, day_last = '1961-01-01', '2023-12-31'
+day_first, day_last = '1961-01-01', '2025-12-31'
 
 # pegando Tmax e Tmin, v2.1 e calculando as suas respectivas medias anuais
-tmax = xr.open_mfdataset(path + 'Tmax*.nc', chunks={'time': 3000}).Tmax
+tmax = xr.open_mfdataset(path + 'Tmax*.nc', chunks={'time': 300}).Tmax
 tmax_yearly = tmax.sel(time=slice(day_first, day_last)).resample(time='YE').mean('time').compute()
 
-tmin = xr.open_mfdataset(path + 'Tmin*.nc', chunks={'time': 3000}).Tmin
+tmin = xr.open_mfdataset(path + 'Tmin*.nc', chunks={'time': 300}).Tmin
 tmin_yearly = tmin.sel(time=slice(day_first, day_last)).resample(time='YE').mean('time').compute()
 
 # Temperatura anual
