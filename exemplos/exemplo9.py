@@ -5,7 +5,7 @@ import pandas as pd
 from scipy import stats
 import seaborn as sns
 
-"""Comportamento da temperatuta média em diferentes regioes do Brasil
+"""Comportamento da temperatura média em diferentes regioes do Brasil
 """
 
 # colocar em "path" o caminho correto dos arquivos NetCDF

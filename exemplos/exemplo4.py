@@ -6,8 +6,8 @@ Plotando a média mensal da ET0 para algumas cidades periodo 1961-01-01' ate '19
 """
 
 # pegando variavel
-path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
-ds = xr.open_mfdataset(path_var + 'ETo*.nc', chunks={'time': 3000}).sel(time=slice('1961-01-01', '1989-12-31'))
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_beta/data/netcdf_new_dtype/'
+ds = xr.open_mfdataset(path_var + 'ETo*.nc', chunks={'time': 300}).sel(time=slice('1961-01-01', '1989-12-31'))
 var = ds['ETo']
 
 # cidades e coordenadas
