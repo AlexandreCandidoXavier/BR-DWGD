@@ -10,10 +10,10 @@ Para as variáveis pr e ETo, os valores são os acumulados,
 para as demais, é média dos mês 
 """
 # periodo para ser exportado
-date_start, date_end = '1961-01-01', '2024-03-20'
+date_start, date_end = '1961-01-01', '2025-12-31'
 
 # set correct path of the netcdf files
-path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_beta/data/netcdf_new_dtype/'
 
 # Posicoes: Colocar em ordem, separando por virgula. Neste exemplo temos dois pontos em que as coordenadas
 # (lat, lon) sao (-20.6,-44.6) e  (-21.0, -44.1), respectivamente para o primeiro e segundo ponto.
@@ -36,7 +36,7 @@ def rawData(var2get_xr, var_name2get):
 for n, var_name2get in enumerate(var_names):
     print("getting " + var_name2get)
     if var_name2get in ["pr", "ETo"]:
-        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 3000}) \
+        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 300}) \
                        .resample(time="ME").sum("time")
         # var2get_xr[var_name2get].sel(latitude=lat[0], longitude=lon[0], method='nearest').plot()
     else:

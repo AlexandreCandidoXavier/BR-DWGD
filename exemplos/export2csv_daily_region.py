@@ -9,20 +9,22 @@ limites da região e período de tempo dos dados à ser exportado.
 """
 
 # set correct path of the netcdf files
-path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_beta/data/netcdf_new_dtype/'
 
 # periodo para ser exportado
-date_start, date_end = '1961-01-01', '2024-03-20'
+date_start, date_end = '1961-01-01', '2025-12-31'
 
 # limits of the area
 lat_min, lat_max = -12.64, -12.25
 lon_min, lon_max = -38.96, -38.59
 
+lat_min, lat_max = -23.6, -21.7
+lon_min, lon_max = -48.8, -45.4
 # variables names
 var_names = ['Rs', 'u2', 'Tmax', 'Tmin', 'RH', 'pr', 'ETo']
 
 # latitude and longitude of GRID
-var = xr.open_mfdataset(path_var + 'pr*.nc', chunks={'time': 3000})
+var = xr.open_mfdataset(path_var + 'pr*.nc', chunks={'time': 200})
 latitude = var.latitude.values
 longitude = var.longitude.values
 
@@ -46,7 +48,7 @@ def rawData(var2get_xr, var_name2get):
 # getting data from NetCDF files
 for n, var_name2get in enumerate(var_names):
     print("lendo: " + var_name2get)
-    var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').chunk(chunks={"time": 400})
+    var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={"time": 200})
     if n == 0:
         var_ar = rawData(var2get_xr, var_name2get)
         n_lines = var_ar.shape[0]

@@ -5,7 +5,7 @@ import time
 import matplotlib.pyplot as plt
 import rioxarray
 
-path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_beta/data/netcdf_new_dtype/'
 
 lat_min, lat_max = -22, -13.8
 lon_min, lon_max = -42.1, -38.5
@@ -13,7 +13,7 @@ lon_min, lon_max = -42.1, -38.5
 # variables names
 var_names = ['Rs', 'u2', 'Tmax', 'Tmin', 'RH', 'pr', 'ETo']
 
-prec = xr.open_mfdataset(path_var + 'pr*.nc')
+prec = xr.open_mfdataset(path_var + 'pr*.nc', chunks={"time": 200})
 
 # criando mascara para o continente e mar
 mask_ocean = 2 * np.ones(prec['pr'].shape[1:]) * np.isnan(prec['pr'].isel(time=0))
@@ -25,10 +25,10 @@ prec.coords['mask'] = xr.DataArray(mask_array, dims=('latitude', 'longitude'))
 for n, var_name2get in enumerate(var_names):
     print("lendo: " + var_name2get)
     if var_name2get in ["pr", "ETo"]:
-        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="M").sum("time")
+        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={"time": 200}).resample(time="M").sum("time")
 
     else:
-        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc').resample(time="M").mean("time")
+        var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={"time": 200}).resample(time="M").mean("time")
 
     var2get_xr = var2get_xr.where(prec.mask == 1, np.nan)
     var2get_xr.where(((var2get_xr.latitude < lat_max) &

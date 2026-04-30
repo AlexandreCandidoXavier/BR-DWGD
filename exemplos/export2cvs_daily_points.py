@@ -7,10 +7,10 @@ import time
 Exportando dados DIÁRIOS de todas as variaveis para determinadas posicoes/pontos geograficas. 
 """
 # periodo para ser exportado
-date_start, date_end = '1961-01-01', '2024-03-20'
+date_start, date_end = '1961-01-01', '2025-12-31'
 
 # set correct path of the netcdf files
-path_var = '/home/alexandre/Dropbox/grade_2020/grade_2020-07_2023/data/netcdf_new_dtype/'
+path_var = '/home/alexandre/Dropbox/grade_2020/grade_beta/data/netcdf_new_dtype/'
 
 # Posicoes: Colocar em ordem, separando por virgula. Neste exemplo temos dois pontos em que as coordenadas
 # (lat, lon) sao (-20.6,-44.6) e  (-21.0, -44.1), respectivamente para o primeiro e segundo ponto.
@@ -31,7 +31,7 @@ def rawData(var2get_xr, var_name2get):
 # getting data from NetCDF files
 for n, var_name2get in enumerate(var_names):
     print("getting " + var_name2get)
-    var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 3000})
+    var2get_xr = xr.open_mfdataset(path_var + var_name2get + '*.nc', chunks={'time': 300})
     if n == 0:
         var_ar, time = rawData(var2get_xr, var_name2get)
     else:
