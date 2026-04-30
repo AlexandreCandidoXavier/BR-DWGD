@@ -18,8 +18,6 @@ date_start, date_end = '1961-01-01', '2025-12-31'
 lat_min, lat_max = -12.64, -12.25
 lon_min, lon_max = -38.96, -38.59
 
-lat_min, lat_max = -23.6, -21.7
-lon_min, lon_max = -48.8, -45.4
 # variables names
 var_names = ['Rs', 'u2', 'Tmax', 'Tmin', 'RH', 'pr', 'ETo']
 
