@@ -7,7 +7,7 @@ BR-DWGD por meio da linguagem Python. Encontrando erros, por favor entrar em con
 </span></strong><span style="color: #ff0000;">Para rodar os códigos abaixo, serão necessários &plusmn;6GB de memória
 RAM livre.</span></p>
 
-## Informações sobre atualizações da **BR-DWGB**
+## Informações sobre atualizações da **BR-DWGD**
 
 [https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0](https://sites.google.com/site/alexandrecandidoxavierufes/brazilian-daily-weather-gridded-data?authuser=0)
 
