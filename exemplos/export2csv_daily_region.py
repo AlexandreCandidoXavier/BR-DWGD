@@ -21,7 +21,7 @@ lon_min, lon_max = -38.96, -38.59
 # variables names
 var_names = ['Rs', 'u2', 'Tmax', 'Tmin', 'RH', 'pr', 'ETo']
 
-# latitude and longitude of GRID
+# getting latitude and longitude of GRID
 var = xr.open_mfdataset(path_var + 'pr*.nc', chunks={'time': 200})
 latitude = var.latitude.values
 longitude = var.longitude.values
